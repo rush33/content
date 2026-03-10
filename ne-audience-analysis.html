@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NE Career Hub — Deep Audience Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13151c;
+    --surface2: #1a1d27;
+    --border: #252836;
+    --text: #e8e6e0;
+    --muted: #6b6e7e;
+    --accent: #4fffb0;
+    --red: #ff4f6d;
+    --yellow: #ffd166;
+    --blue: #5b9cf6;
+    --purple: #c084fc;
+    --orange: #fb923c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 52px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cover-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,255,176,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,255,176,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .cover-glow {
+    position: absolute;
+    top: -200px; right: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(79,255,176,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-glow2 {
+    position: absolute;
+    bottom: -200px; left: 0;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,79,109,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .brand-chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    border: 1px solid rgba(79,255,176,0.25);
+    padding: 6px 14px;
+    letter-spacing: 0.08em;
+  }
+
+  .doc-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .cover-body {
+    position: relative; z-index: 1;
+    padding: 40px 0;
+  }
+
+  .cover-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cover-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+  }
+
+  .cover h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .cover-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 540px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    position: relative; z-index: 1;
+  }
+
+  .cover-stat {
+    background: var(--surface);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .cover-stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .cover-stat-l {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 52px;
+  }
+
+  section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+
+  .sec-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sec-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  p { color: #a8a6a0; margin-bottom: 14px; }
+  p strong { color: var(--text); }
+
+  /* ── PERSONA CARDS ── */
+  .persona {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .persona-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .persona-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .persona-desc {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .persona-size {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .persona-size-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .persona-size-l {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .persona-col {
+    background: var(--surface);
+    padding: 20px 22px;
+  }
+
+  .persona-col-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .persona-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .persona-col ul li {
+    font-size: 13px;
+    color: #a8a6a0;
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .persona-col ul li::before {
+    content: '›';
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── INSIGHT BLOCKS ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .insight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+  }
+
+  .insight::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+
+  .insight.fear::before { background: var(--red); }
+  .insight.desire::before { background: var(--accent); }
+  .insight.pain::before { background: var(--orange); }
+  .insight.motivation::before { background: var(--blue); }
+
+  .insight-icon { font-size: 22px; margin-bottom: 12px; display: block; }
+  .insight h3 { font-size: 14px; margin-bottom: 8px; }
+  .insight p { font-size: 13px; margin: 0; }
+
+  /* ── PLATFORM SPLIT ── */
+  .platform-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .plat-panel { background: var(--surface); padding: 32px; }
+
+  .plat-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .plat-handle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .plat-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+  }
+
+  .badge-blue { background: rgba(91,156,246,0.12); color: var(--blue); border: 1px solid rgba(91,156,246,0.2); }
+  .badge-purple { background: rgba(192,132,252,0.12); color: var(--purple); border: 1px solid rgba(192,132,252,0.2); }
+  .badge-green { background: rgba(79,255,176,0.1); color: var(--accent); border: 1px solid rgba(79,255,176,0.2); }
+  .badge-red { background: rgba(255,79,109,0.1); color: var(--red); border: 1px solid rgba(255,79,109,0.2); }
+  .badge-yellow { background: rgba(255,209,102,0.1); color: var(--yellow); border: 1px solid rgba(255,209,102,0.2); }
+
+  .plat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .plat-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+
+  .plat-item-head {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .plat-item p { font-size: 12px; margin: 0; }
+
+  /* ── CONTENT ANGLES ── */
+  .angles { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); }
+
+  .angle {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: start;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .angle:last-child { border-bottom: none; }
+  .angle:hover { background: var(--surface2); }
+
+  .angle-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .angle-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .angle p { font-size: 13px; margin: 0; }
+
+  .angle-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── HOOK FORMULAS ── */
+  .hook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .hook-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+  }
+
+  .hook-platform {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .hook-formula {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-left: 2px solid var(--accent);
+    padding-left: 14px;
+  }
+
+  .hook-example {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.6;
+  }
+
+  /* ── IG REEL SECTION ── */
+  .reel-insight {
+    background: linear-gradient(135deg, rgba(192,132,252,0.06), rgba(255,79,109,0.06));
+    border: 1px solid rgba(192,132,252,0.2);
+    padding: 32px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reel-insight::before {
+    content: '▶';
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    font-size: 80px;
+    color: rgba(192,132,252,0.06);
+    line-height: 1;
+  }
+
+  .reel-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--purple);
+    margin-bottom: 14px;
+  }
+
+  .reel-insight h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .reel-formats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .reel-format {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    padding: 16px;
+  }
+
+  .reel-format-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+    margin-bottom: 8px;
+  }
+
+  .reel-format p { font-size: 12px; margin: 0; }
+
+  /* ── FB SECTION ── */
+  .fb-insight {
+    background: linear-gradient(135deg, rgba(91,156,246,0.06), rgba(79,255,176,0.04));
+    border: 1px solid rgba(91,156,246,0.2);
+    padding: 32px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fb-insight::before {
+    content: 'f';
+    position: absolute;
+    right: 28px; bottom: 10px;
+    font-size: 90px;
+    color: rgba(91,156,246,0.06);
+    font-family: serif;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .fb-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  .fb-formats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .fb-format {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    padding: 16px;
+  }
+
+  .fb-format-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--surface2);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: #a8a6a0; vertical-align: top; }
+  td strong { color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── QUOTE ── */
+  .quote-block {
+    border-left: 3px solid var(--accent);
+    padding: 16px 24px;
+    background: rgba(79,255,176,0.04);
+    margin: 24px 0;
+  }
+
+  .quote-block p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .quote-credit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* ── TOPICS TABLE SECTION ── */
+  .topics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .topic-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .topic-group-head {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .topic-group ul { padding: 16px 20px; list-style: none; }
+  .topic-group ul li {
+    font-size: 13px;
+    color: #a8a6a0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .topic-group ul li:last-child { border-bottom: none; }
+  .topic-group ul li::before { content: '—'; color: var(--muted); flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 40px 52px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── UTIL ── */
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mb-0 { margin-bottom: 0; }
+
+  .dot-green { color: var(--accent); }
+  .dot-red { color: var(--red); }
+  .dot-yellow { color: var(--yellow); }
+  .dot-blue { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-glow2"></div>
+
+  <div class="cover-top">
+    <div class="brand-chip">NE_CAREER_HUB</div>
+    <div class="doc-tag">AUDIENCE_INTEL · VOL.02 · 2025</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Deep Audience Analysis</div>
+    <h1>Inside<br>Their<br><em>Minds</em></h1>
+    <p class="cover-sub">A forensic breakdown of who your audience really is — their fears at 2am, their dreams, their scrolling habits, and exactly what messaging makes them stop and act.</p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stat">
+      <div class="cover-stat-n" style="color: var(--accent);">3</div>
+      <div class="cover-stat-l">Core Personas</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-n" style="color: var(--red);">12</div>
+      <div class="cover-stat-l">Emotional Triggers</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-n" style="color: var(--yellow);">2</div>
+      <div class="cover-stat-l">Platform Universes</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-n" style="color: var(--blue);">40+</div>
+      <div class="cover-stat-l">Content Topics</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 1: THE TRUTH -->
+<div class="wrap">
+<section>
+  <div class="sec-label">01 — The Uncomfortable Truth</div>
+  <h2>They Don't Want a Job.<br>They Want <em style="color:var(--accent);">Security.</em></h2>
+  <p>This is the most important insight in this entire document. Your audience isn't just job hunting — they're chasing a feeling. A government job in NE India represents <strong>the end of anxiety</strong>. It means permanent income, social status, pension, parental approval, and freedom from daily uncertainty. Every piece of content you create must speak to this deeper emotional truth — not just the surface-level job posting.</p>
+
+  <div class="quote-block mt-24">
+    <p>"Agar sarkari naukri lag jaye toh life set ho jaye."</p>
+    <div class="quote-credit">— The sentence playing on a loop in your audience's head</div>
+  </div>
+
+  <p>Understand this and every messaging decision becomes obvious. You're not selling job listings. You're selling <strong>hope made actionable</strong>.</p>
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 2: PERSONAS -->
+<div class="wrap">
+<section>
+  <div class="sec-label">02 — The Three Personas</div>
+  <h2>Who Exactly Is In Your Audience</h2>
+  <p>Three distinct people use NE Career Hub — they share the same dream but live completely different realities. Your content must speak to all three, on the right platform, in the right language.</p>
+
+  <!-- PERSONA 1 -->
+  <div class="persona mt-32">
+    <div class="persona-head">
+      <div class="persona-avatar" style="background: rgba(79,255,176,0.1); border: 1px solid rgba(79,255,176,0.2);">🎓</div>
+      <div>
+        <div class="persona-name">"Priya" — The Hopeful Fresh Graduate</div>
+        <div class="persona-desc">female · 19–24 · BA/BSc/BCom just completed · lives with parents</div>
+      </div>
+      <div class="persona-size">
+        <div class="persona-size-n" style="color: var(--accent);">38%</div>
+        <div class="persona-size-l">of your audience</div>
+      </div>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--red);">😰 Fears</div>
+        <ul>
+          <li>Wasting years and ending up in private sector anyway</li>
+          <li>Missing a deadline she didn't know existed</li>
+          <li>Being the only one in her group without a job</li>
+          <li>Her parents' silent disappointment</li>
+          <li>Getting scammed by fake job sites</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--accent);">✨ Desires</div>
+        <ul>
+          <li>A stable salary that arrives on the 1st of every month</li>
+          <li>Respect from relatives at family functions</li>
+          <li>A clear step-by-step path — not chaos</li>
+          <li>Success story she can see herself in</li>
+          <li>Someone to tell her "you can do this"</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--orange);">⚡ Motivations</div>
+        <ul>
+          <li>Family pressure is her biggest fuel</li>
+          <li>Peer competition (friends already employed)</li>
+          <li>Dreams of financial independence</li>
+          <li>Instagram aspirational content shapes her world</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--blue);">📱 Behavior</div>
+        <ul>
+          <li>Instagram 3–4hrs/day (Reels, Stories)</li>
+          <li>Saves content she'll "come back to"</li>
+          <li>Shares motivational reels to WhatsApp</li>
+          <li>Googles "how to apply" at midnight</li>
+          <li>Follows coaching centers on IG</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONA 2 -->
+  <div class="persona">
+    <div class="persona-head">
+      <div class="persona-avatar" style="background: rgba(255,209,102,0.1); border: 1px solid rgba(255,209,102,0.2);">📚</div>
+      <div>
+        <div class="persona-name">"Rahul" — The Battle-Hardened Aspirant</div>
+        <div class="persona-desc">male · 23–32 · 2–5 years into exam prep · has failed before</div>
+      </div>
+      <div class="persona-size">
+        <div class="persona-size-n" style="color: var(--yellow);">45%</div>
+        <div class="persona-size-l">of your audience</div>
+      </div>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--red);">😰 Fears</div>
+        <ul>
+          <li>Age bar approaching — APSC has limits</li>
+          <li>Missing the one notification that changes everything</li>
+          <li>Wasted years with nothing to show</li>
+          <li>Friends in jobs; he's still "preparing"</li>
+          <li>Information overload causing him to miss facts</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--accent);">✨ Desires</div>
+        <ul>
+          <li>One centralized, trustworthy source — no noise</li>
+          <li>Instant alerts so he never misses a deadline</li>
+          <li>Genuine exam prep shortcuts that work</li>
+          <li>Validation that his effort will pay off</li>
+          <li>Community of people who understand him</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--orange);">⚡ Motivations</div>
+        <ul>
+          <li>Sunk cost — "I've come too far to stop"</li>
+          <li>Deep desire to prove doubters wrong</li>
+          <li>Financial urgency building every year</li>
+          <li>One success story is all it takes to reignite</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--blue);">📱 Behavior</div>
+        <ul>
+          <li>Telegram all day — multiple channels</li>
+          <li>Facebook Groups (heavy user)</li>
+          <li>YouTube for exam prep 2–3hrs/day</li>
+          <li>Screenshots everything important</li>
+          <li>Skeptical of new sources, trust is earned</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONA 3 -->
+  <div class="persona">
+    <div class="persona-head">
+      <div class="persona-avatar" style="background: rgba(91,156,246,0.1); border: 1px solid rgba(91,156,246,0.2);">👨‍👩‍👦</div>
+      <div>
+        <div class="persona-name">"Bora Da" — The Anxious Parent</div>
+        <div class="persona-desc">parent · 38–55 · forward-happy · Facebook native · shares everything to family group</div>
+      </div>
+      <div class="persona-size">
+        <div class="persona-size-n" style="color: var(--blue);">17%</div>
+        <div class="persona-size-l">of your audience</div>
+      </div>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--red);">😰 Fears</div>
+        <ul>
+          <li>Their child missing opportunities due to ignorance</li>
+          <li>Being seen as a parent who "didn't help"</li>
+          <li>Age bar passing while child delays applying</li>
+          <li>Scam websites misleading their family</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--accent);">✨ Desires</div>
+        <ul>
+          <li>One reliable source they can trust and share</li>
+          <li>Simple language — no jargon</li>
+          <li>Assamese/local language content</li>
+          <li>Respect as an "informed parent"</li>
+          <li>For their child to get a "paka job"</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--orange);">⚡ Motivations</div>
+        <ul>
+          <li>Social status of having a govt-employed child</li>
+          <li>Financial security for old age</li>
+          <li>Parental duty — "I must inform them"</li>
+        </ul>
+      </div>
+      <div class="persona-col">
+        <div class="persona-col-label" style="color: var(--blue);">📱 Behavior</div>
+        <ul>
+          <li>Facebook 2–3hrs/day, mostly passive</li>
+          <li>WhatsApp power user — forwards everything</li>
+          <li>Clicks links from known pages only</li>
+          <li>Prefers text posts over video</li>
+          <li>Shares to family + community groups</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 3: EMOTIONAL MAP -->
+<div class="wrap">
+<section>
+  <div class="sec-label">03 — Emotional Trigger Map</div>
+  <h2>The 12 Emotions That<br>Drive Every Action</h2>
+  <p>Great content doesn't inform — it triggers. Here are the exact emotional levers that make your audience stop scrolling, save, share, and click.</p>
+
+  <div class="insight-grid mt-24">
+    <div class="insight fear">
+      <span class="insight-icon">😱</span>
+      <h3 style="color: var(--red);">Fear of Missing Out (FOMO)</h3>
+      <p>"⚠️ Last 48 hours — Assam Police recruitment closes Sunday." This is your highest-performing emotional trigger. Use it on every expiring job. Urgency = action.</p>
+    </div>
+    <div class="insight desire">
+      <span class="insight-icon">🌟</span>
+      <h3 style="color: var(--accent);">Aspiration & Hope</h3>
+      <p>"From her small village in Barpeta, she cracked APSC." Success stories activate hope. Hope activates sharing. Sharing activates growth. Use this weekly.</p>
+    </div>
+    <div class="insight pain">
+      <span class="insight-icon">😤</span>
+      <h3 style="color: var(--orange);">Frustration with Chaos</h3>
+      <p>"Tired of 15 tabs open just to track one job?" You're the antidote to chaos. Call out the pain explicitly. Your clean, no-ad experience is the solution.</p>
+    </div>
+    <div class="insight motivation">
+      <span class="insight-icon">💪</span>
+      <h3 style="color: var(--blue);">Validation & Recognition</h3>
+      <p>"You're preparing while everyone else has already given up." Acknowledge their grind. Aspirants who've been trying for 3+ years HUNGER for someone to see their effort.</p>
+    </div>
+    <div class="insight desire">
+      <span class="insight-icon">🧭</span>
+      <h3 style="color: var(--accent);">Need for Clarity</h3>
+      <p>"Exactly which documents do you need for this application — in order." Step-by-step content makes you the trusted guide in a confusing world. Massive save and share rates.</p>
+    </div>
+    <div class="insight fear">
+      <span class="insight-icon">⏳</span>
+      <h3 style="color: var(--red);">Time & Age Anxiety</h3>
+      <p>"You have 3 years before age bar. Here's what to do NOW." Many APSC aspirants watch their age limit approaching. This creates powerful urgency without manipulation.</p>
+    </div>
+    <div class="insight pain">
+      <span class="insight-icon">🏡</span>
+      <h3 style="color: var(--orange);">Family Pressure & Guilt</h3>
+      <p>Never exploit this — but acknowledge it. "Your parents want the best for you. Here's how to make them proud with [Job Name]." Reframe guilt into motivation.</p>
+    </div>
+    <div class="insight motivation">
+      <span class="insight-icon">🏆</span>
+      <h3 style="color: var(--blue);">Social Comparison</h3>
+      <p>"2,340 people from NE have already applied to this job." Social proof + mild comparison triggers action. People move when they see peers moving.</p>
+    </div>
+    <div class="insight desire">
+      <span class="insight-icon">🔍</span>
+      <h3 style="color: var(--accent);">Curiosity</h3>
+      <p>"This grade-III job pays ₹42,000/month — and most people don't know it exists." Pattern interrupt. Curiosity gaps get clicks, shares, and saves more than anything else.</p>
+    </div>
+    <div class="insight fear">
+      <span class="insight-icon">🚫</span>
+      <h3 style="color: var(--red);">Fear of Being Deceived</h3>
+      <p>"We never post unofficial listings. Every job is verified." Trust signals are emotional triggers too. In a space full of scams, your reliability is emotional relief.</p>
+    </div>
+    <div class="insight motivation">
+      <span class="insight-icon">💰</span>
+      <h3 style="color: var(--blue);">Salary & Benefits Desire</h3>
+      <p>"Grade IV salary breakdown: ₹14,000 basic + ₹7,200 DA + ₹3,200 HRA = ₹24,400/month + pension." Concrete numbers perform incredibly well. People will screenshot and share.</p>
+    </div>
+    <div class="insight pain">
+      <span class="insight-icon">🤯</span>
+      <h3 style="color: var(--orange);">Information Overwhelm</h3>
+      <p>"I'll do the tracking so you don't have to." Your USPs (filters, alerts, clean UI) directly solve this. Make content that demonstrates the relief of using your platform.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 4: PLATFORM UNIVERSES -->
+<div class="wrap">
+<section>
+  <div class="sec-label">04 — The Two Platform Universes</div>
+  <h2>Facebook & Instagram<br>Are <em style="color: var(--yellow);">Different Worlds</em></h2>
+  <p>This is where most brand pages fail — they post the same content everywhere and wonder why it doesn't work. You've correctly identified that these platforms serve fundamentally different audiences with different psychology. Here's the complete breakdown.</p>
+
+  <div class="platform-split">
+    <div class="plat-panel">
+      <div class="plat-logo" style="color: var(--blue);">Facebook</div>
+      <div class="plat-handle">The Normie Boomer Universe</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
+        <span class="plat-badge badge-blue">Text-first</span>
+        <span class="plat-badge badge-blue">Sharing culture</span>
+        <span class="plat-badge badge-blue">35+ audience</span>
+      </div>
+
+      <p style="font-size: 14px; margin-bottom: 16px;">Facebook in NE India is where parents, teachers, and older siblings live. They are <strong style="color: var(--text);">trust-first, share-happy, and scroll slowly.</strong> They read full posts. They comment. They forward to family WhatsApp groups. Win them and they become your distribution engine.</p>
+
+      <div class="plat-row">
+        <div class="plat-item">
+          <div class="plat-item-head">🏆 What Actually Works Here</div>
+          <p>Long-form text posts with emotional opening lines. "আজি এটা সুখবৰ" (Good news today) style openers. Job alerts with full details written out — salary, qualifications, deadline, link. No link-only posts.</p>
+        </div>
+        <div class="plat-item">
+          <div class="plat-item-head">👨‍👩‍👧 The Parent Forward Hack</div>
+          <p>End every job post with: "আপোনাৰ সন্তানক শ্বেয়াৰ কৰক" (Share with your children). Parents will forward your posts to every family group. This is free virality.</p>
+        </div>
+        <div class="plat-item">
+          <div class="plat-item-head">📝 Post Format That Performs</div>
+          <p>Opening hook line (emotional) → Job name + key details in bullet points → Eligibility clearly stated → Deadline in bold → Link to apply → CTA to share. Keep it scannable.</p>
+        </div>
+        <div class="plat-item">
+          <div class="plat-item-head">🚫 What to Avoid on Facebook</div>
+          <p>Short cryptic posts. Posts that just say "Link in bio." Instagram-style aesthetic posts with minimal text. Memes (wrong audience). Anything that requires effort to understand.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-panel">
+      <div class="plat-logo" style="color: var(--purple);">Instagram</div>
+      <div class="plat-handle">The Mixed-Gen Scroll Machine</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
+        <span class="plat-badge badge-purple">Reels-first</span>
+        <span class="plat-badge badge-purple">Visual hooks</span>
+        <span class="plat-badge badge-purple">18–32 audience</span>
+      </div>
+
+      <p style="font-size: 14px; margin-bottom: 16px;">Instagram is where your 18–28 audience dominates, but you've noticed something real: <strong style="color: var(--text);">reels with girls get more views, and reasoning/quiz-type content performs well.</strong> Both of these are completely explainable — and exploitable.</p>
+
+      <div class="plat-row">
+        <div class="plat-item">
+          <div class="plat-item-head" style="color: var(--purple);">👩 Why the "Girl Factor" Works on IG</div>
+          <p>It's not just about gender — it's about <strong style="color: var(--text);">relatability and aspiration combined.</strong> A girl from NE India in uniform (or on her selection day) is the most powerful image you can post. She looks like your audience. She becomes proof of possibility. Use real user success stories featuring women — with permission. Never fake it.</p>
+        </div>
+        <div class="plat-item">
+          <div class="plat-item-head" style="color: var(--purple);">🧠 Why Reasoning Questions Explode</div>
+          <p>They trigger a <strong style="color: var(--text);">cognitive engagement loop.</strong> Person sees question → thinks → watches to end for answer → comments → shares to test friends. Algorithm sees high watch time + comments = pushes reel to 10x more people. It's a perfectly engineered engagement machine.</p>
+        </div>
+        <div class="plat-item">
+          <div class="plat-item-head">⚡ Reel Hook Formula for Your Niche</div>
+          <p>First 1.5 seconds must create a curiosity gap OR a challenge. "Can you answer what 90% of aspirants get wrong?" OR a face on screen saying "I got selected in Assam Police. Here's what nobody tells you." Then deliver the value fast.</p>
+        </div>
+        <div class="plat-item">
+          <div class="plat-item-head">📊 Carousel Saves Strategy</div>
+          <p>Carousels with "swipe to see which jobs are for you based on your qualification" perform well because they're personalized. End slide always: "Set alerts for your qualification type at necareerhub.com"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IG Reel Formats Deep Dive -->
+  <div class="reel-insight">
+    <div class="reel-tag">Instagram Reels — Specific Format Playbook</div>
+    <h3>The 3 Reel Formats That Will Win for NE Career Hub</h3>
+    <p style="font-size: 14px;">Based on what you've observed working in your niche + platform psychology. Execute these consistently.</p>
+
+    <div class="reel-formats">
+      <div class="reel-format">
+        <div class="reel-format-label">Format 01 — "The Quiz Reel"</div>
+        <p style="color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 6px;">"Can you solve this?"</p>
+        <p>Show a reasoning question on screen (GK, Maths, verbal). "90% of APSC aspirants get this wrong →" Give 5 seconds. Reveal answer with explanation. End: "Follow for daily practice questions." <strong style="color: var(--purple);">→ High watch time, high comments, high shares</strong></p>
+      </div>
+      <div class="reel-format">
+        <div class="reel-format-label">Format 02 — "The Success Story Reel"</div>
+        <p style="color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 6px;">"She got selected at 24"</p>
+        <p>Real girl/boy from NE India, their photo or short clip, text overlay telling the story. "She had failed twice. Applied via NE Career Hub. Never missed an alert. Got selected." End with: "Start your story →" <strong style="color: var(--purple);">→ High saves, shares, profile visits</strong></p>
+      </div>
+      <div class="reel-format">
+        <div class="reel-format-label">Format 03 — "The Salary Reveal Reel"</div>
+        <p style="color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 6px;">"This govt job pays ₹X?"</p>
+        <p>Surprising salary number in first frame. "Most people don't know [Job Name] pays ₹47,000/month. Here's the full breakdown + how to apply before [Date]." Numbers create curiosity. Curiosity kills the scroll. <strong style="color: var(--purple);">→ High reach, saves, website clicks</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FB Deep Dive -->
+  <div class="fb-insight">
+    <div class="fb-tag">Facebook — Specific Format Playbook</div>
+    <h3>The 4 Post Types That Win on Facebook NE India</h3>
+    <p style="font-size: 14px;">Older audience, slower scroll, high trust requirement. These formats consistently get shares which = free reach.</p>
+
+    <div class="fb-formats">
+      <div class="fb-format">
+        <div class="fb-format-label">Format 01 — "The Job Alert Post"</div>
+        <p style="font-size: 13px; color: var(--text);">Full text, all details, deadline bold, bilingual CTA. Written like a helpful friend would write it, not like a corporate post.</p>
+      </div>
+      <div class="fb-format">
+        <div class="fb-format-label">Format 02 — "The Parent Address Post"</div>
+        <p style="font-size: 13px; color: var(--text);">Directly to parents: "If you have a child between 20–30, share this. [3 govt jobs opening this week]." Gets mass forwarded to family groups.</p>
+      </div>
+      <div class="fb-format">
+        <div class="fb-format-label">Format 03 — "The Deadline Panic Post"</div>
+        <p style="font-size: 13px; color: var(--text);">"⚠️ 72 ঘণ্টা বাকী আছে। (72 hours left.) [Job name] — এতিয়াই apply কৰক।" Urgency in local language hits harder and feels more genuine.</p>
+      </div>
+      <div class="fb-format">
+        <div class="fb-format-label">Format 04 — "The Weekly Roundup"</div>
+        <p style="font-size: 13px; color: var(--text);">Every Sunday: "This week's top 10 government job openings in NE India." Full list with details. Gets saved, bookmarked, and forwarded. Builds habit of checking your page.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 5: MESSAGING ANGLES -->
+<div class="wrap">
+<section>
+  <div class="sec-label">05 — Messaging Angles</div>
+  <h2>8 Angles That Stop<br>the Scroll & Build Trust</h2>
+  <p>A messaging angle is the <em>lens</em> through which you present information. Same job, eight different angles — each speaks to a different emotion and persona. Rotate these to avoid repetition and maximize reach.</p>
+
+  <div class="angles mt-24">
+    <div class="angle">
+      <div class="angle-num">01</div>
+      <div>
+        <div class="angle-title">The Urgency Angle — "Before It's Too Late"</div>
+        <p>Lead with the deadline. Make the scarcity real. "Assam Rifles is hiring 615 people. Application closes in 4 days. If you qualify, stop what you're doing." Works on all platforms, all personas. Never overuse — save for genuine deadlines.</p>
+      </div>
+      <span class="angle-tag badge-red">All Platforms</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">02</div>
+      <div>
+        <div class="angle-title">The Curiosity Angle — "You Didn't Know This Existed"</div>
+        <p>"A government job in NE India with ₹52,000/month starting salary — and barely anyone is applying." Information asymmetry as a hook. Audience feels privileged to know. High shareability because they want to tell friends.</p>
+      </div>
+      <span class="angle-tag badge-purple">Instagram-first</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">03</div>
+      <div>
+        <div class="angle-title">The Empathy Angle — "I Know How You Feel"</div>
+        <p>"3 years of preparation. Missed 2 exams by 5 marks. Still going. If this is you — this notification is for you." Speak their pain out loud before presenting the job or tip. Trust builds instantly when someone feels understood.</p>
+      </div>
+      <span class="angle-tag badge-blue">Facebook + IG Stories</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">04</div>
+      <div>
+        <div class="angle-title">The Proof Angle — "It Actually Works"</div>
+        <p>"Mridul from Jorhat set an alert on NE Career Hub. Got notified 3 hours after posting went live. Applied same day. Got shortlisted." Feature real users. Even one genuine story per week destroys skepticism and builds brand loyalty.</p>
+      </div>
+      <span class="angle-tag badge-green">Instagram Reels</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">05</div>
+      <div>
+        <div class="angle-title">The Parent Angle — "For Bora/Maa to Share"</div>
+        <p>"All parents in Assam/Meghalaya/Manipur: Forward this to your children. 3 government jobs opening this week. No exam required for 2 of them. Deadline: [Date]." Written to be forwarded. Parents feel useful. You get distribution.</p>
+      </div>
+      <span class="angle-tag badge-blue">Facebook-only</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">06</div>
+      <div>
+        <div class="angle-title">The Clarity Angle — "Exactly What to Do"</div>
+        <p>"Step 1: Open necareerhub.com. Step 2: Filter by your district. Step 3: Turn on alerts for your qualification. Done. You will never miss a job again." Remove all friction. Make the next step so obvious they feel stupid not to do it.</p>
+      </div>
+      <span class="angle-tag badge-yellow">Telegram + IG Carousel</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">07</div>
+      <div>
+        <div class="angle-title">The Comparison Angle — "vs. Everyone Else"</div>
+        <p>"Other job sites: 47 ads, 3 popups, no alerts, outdated listings. NE Career Hub: Zero ads. Real-time alerts. Filter by state/dept/qualification. That's it." Show don't tell. Direct comparison of experience. Your USPs shine brightest next to competitors.</p>
+      </div>
+      <span class="angle-tag badge-purple">Instagram Reels</span>
+    </div>
+
+    <div class="angle">
+      <div class="angle-num">08</div>
+      <div>
+        <div class="angle-title">The Insider Angle — "What Most People Don't Know"</div>
+        <p>"Most aspirants apply to APSC without knowing: the preliminary exam has negative marking. Here's how to prepare differently." Position yourself as the insider with information others don't have. Builds authority, trust, and follow intent.</p>
+      </div>
+      <span class="angle-tag badge-green">YouTube + Carousel</span>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 6: CONTENT TOPICS -->
+<div class="wrap">
+<section>
+  <div class="sec-label">06 — Content Topic Bank</div>
+  <h2>40+ Specific Topics<br>Mapped to Each Persona</h2>
+  <p>Never run out of ideas. Every topic below maps to a specific emotion and persona. Rotate through them weekly.</p>
+
+  <div class="topics-grid mt-24">
+    <div class="topic-group">
+      <div class="topic-group-head" style="background: rgba(79,255,176,0.06); border-bottom-color: rgba(79,255,176,0.15);">
+        <span>📋</span> Job Alert Formats
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--accent); margin-left: auto;">All Personas</span>
+      </div>
+      <ul>
+        <li>Weekly "Top 10 Jobs in NE India" roundup</li>
+        <li>"Jobs expiring in 72 hours" urgency post</li>
+        <li>"No exam required" jobs — special series</li>
+        <li>State-specific roundup (Assam this week, Manipur this week)</li>
+        <li>"Jobs for graduates with no experience"</li>
+        <li>Central govt jobs available to NE residents</li>
+        <li>"High salary, low competition" hidden gems</li>
+        <li>Railway/defence jobs with NE quota</li>
+      </ul>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-head" style="background: rgba(255,79,109,0.06); border-bottom-color: rgba(255,79,109,0.15);">
+        <span>🧠</span> Exam Prep Content
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--red); margin-left: auto;">Rahul Persona</span>
+      </div>
+      <ul>
+        <li>Daily reasoning question with explanation (IG Reels)</li>
+        <li>APSC Prelims syllabus breakdown — simplified</li>
+        <li>"5 most common mistakes in APSC application"</li>
+        <li>GK questions specific to NE India history</li>
+        <li>English grammar shortcut series</li>
+        <li>Current affairs weekly digest for NE job exams</li>
+        <li>"How I studied 4 hours/day and cleared [exam]"</li>
+        <li>Document checklist for popular applications</li>
+      </ul>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-head" style="background: rgba(255,209,102,0.06); border-bottom-color: rgba(255,209,102,0.15);">
+        <span>⭐</span> Trust & Authority Content
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--yellow); margin-left: auto;">All Personas</span>
+      </div>
+      <ul>
+        <li>Success story: selected candidate interview</li>
+        <li>"How NE Career Hub alerts work" demo video</li>
+        <li>Scam alert: fake job sites to avoid</li>
+        <li>"We verified this listing — here's how"</li>
+        <li>Behind the scenes: how we find & post jobs</li>
+        <li>Monthly transparency post: jobs posted, users alerted</li>
+        <li>User testimonial repost (with permission)</li>
+        <li>"Why we have no ads" explanation post</li>
+      </ul>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-head" style="background: rgba(91,156,246,0.06); border-bottom-color: rgba(91,156,246,0.15);">
+        <span>💰</span> Salary & Benefits Content
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--blue); margin-left: auto;">High Shareability</span>
+      </div>
+      <ul>
+        <li>Salary breakdown: Grade III govt employee (full)</li>
+        <li>"What ₹35,000 govt salary really looks like after deductions"</li>
+        <li>Pension calculator: what you get at retirement</li>
+        <li>Govt job perks nobody talks about (leave, housing)</li>
+        <li>Private vs government: honest salary comparison</li>
+        <li>DA revision explained simply</li>
+        <li>"How much does an APSC officer actually make?"</li>
+        <li>State-by-state salary comparison for similar posts</li>
+      </ul>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-head" style="background: rgba(192,132,252,0.06); border-bottom-color: rgba(192,132,252,0.15);">
+        <span>🎯</span> Instagram-Specific Topics
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--purple); margin-left: auto;">Priya Persona</span>
+      </div>
+      <ul>
+        <li>"She qualified at 22 — her exact daily routine"</li>
+        <li>"Day in the life of a [job title] in Assam"</li>
+        <li>Reasoning quiz reel series (daily)</li>
+        <li>"Jobs you can apply to RIGHT NOW with a BCom"</li>
+        <li>"This girl applied from her phone in 20 minutes"</li>
+        <li>Aesthetic "motivation" reel for aspirants</li>
+        <li>"POV: you set an alert and never missed a job again"</li>
+        <li>Trend audio + govt job content overlay</li>
+      </ul>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-head" style="background: rgba(91,156,246,0.06); border-bottom-color: rgba(91,156,246,0.15);">
+        <span>👨‍👩‍👧</span> Facebook-Specific Topics
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--blue); margin-left: auto;">Bora Da Persona</span>
+      </div>
+      <ul>
+        <li>"Parents: share this with your children" posts</li>
+        <li>Bilingual (Assamese + English) job alerts</li>
+        <li>Sunday weekly job digest (full text, shareable)</li>
+        <li>"What documents your child needs — prepare now"</li>
+        <li>Local district-specific job posts (Kamrup, Dibrugarh)</li>
+        <li>Congratulations posts when a big recruitment opens</li>
+        <li>Frequently asked questions about govt job applications</li>
+        <li>Age bar awareness: "If your child is 27, they should know this"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 7: HOOK FORMULAS -->
+<div class="wrap">
+<section>
+  <div class="sec-label">07 — Hook Formula Library</div>
+  <h2>The First 3 Seconds<br>Are Everything</h2>
+  <p>On Instagram, you have 1.5 seconds before the swipe. On Facebook, you have one opening line before the "See more" cutoff. These hook formulas are engineered to stop that scroll.</p>
+
+  <div class="hook-grid mt-24">
+
+    <div class="hook-card">
+      <div class="hook-platform" style="color: var(--purple);">Instagram Reel — Opening Frame</div>
+      <div class="hook-formula">"90% of [audience] get this wrong."</div>
+      <div class="hook-example">Example: "90% of APSC aspirants don't know about the negative marking rule. Do you?" → Reel explains it. High watch time guaranteed.</div>
+    </div>
+
+    <div class="hook-card">
+      <div class="hook-platform" style="color: var(--blue);">Facebook Post — Opening Line</div>
+      <div class="hook-formula">"[Emotional opener] + immediate value."</div>
+      <div class="hook-example">Example: "আপোনাৰ সন্তান চাকৰি বিচাৰিছেনে? এই সপ্তাহত Assam চৰকাৰে 342 খন পদৰ বাবে আবেদন মাগিছে।" (Is your child looking for a job? This week Assam govt invited applications for 342 posts.)</div>
+    </div>
+
+    <div class="hook-card">
+      <div class="hook-platform" style="color: var(--accent);">Universal — Curiosity Gap</div>
+      <div class="hook-formula">"This [job/fact/salary] surprised me."</div>
+      <div class="hook-example">Example: "This government job in Meghalaya pays ₹48,000/month, requires only a 10th pass, and has barely 200 applicants. I'm surprised more people don't know about it."</div>
+    </div>
+
+    <div class="hook-card">
+      <div class="hook-platform" style="color: var(--red);">Urgency — All Platforms</div>
+      <div class="hook-formula">"[Number] days left. [Specific consequence]."</div>
+      <div class="hook-example">Example: "3 days left. If you miss this Assam Police deadline, the next recruitment is 2 years away. Apply today." Specific. Real stakes. Not manufactured urgency.</div>
+    </div>
+
+    <div class="hook-card">
+      <div class="hook-platform" style="color: var(--yellow);">Empathy — IG Stories + FB</div>
+      <div class="hook-formula">"If [painful situation], this is for you."</div>
+      <div class="hook-example">Example: "If you've been preparing for 3+ years and still haven't gotten a call letter — this job has no written exam. Just an interview. It's for you."</div>
+    </div>
+
+    <div class="hook-card">
+      <div class="hook-platform" style="color: var(--orange);">Comparison — Instagram</div>
+      <div class="hook-formula">"Stop using [bad thing]. Try [good thing]."</div>
+      <div class="hook-example">Example: "Stop refreshing 6 government websites every day. Let NE Career Hub send you an alert the moment a job appears. It's free. No ads." Then demo the filter feature.</div>
+    </div>
+
+  </div>
+
+  <div class="quote-block mt-32">
+    <p>The best hook you can write is one where your audience thinks: "Wait — this is exactly about me." Make it specific. Make it local. Make it feel like you wrote it just for them.</p>
+    <div class="quote-credit">— The core principle behind all of the above</div>
+  </div>
+
+</section>
+</div>
+
+
+<!-- ════════════════════════════ SECTION 8: TRUST BUILDING -->
+<div class="wrap">
+<section style="border-bottom: none;">
+  <div class="sec-label">08 — Trust Architecture</div>
+  <h2>How You Go From<br>"Just Another Page" to <em style="color: var(--accent);">"The One We Trust"</em></h2>
+  <p>In a niche full of scam sites and outdated info, trust isn't just nice to have — it's your most valuable competitive asset. Here's the systematic way to build it.</p>
+
+  <div class="table-wrap mt-24">
+    <table>
+      <thead>
+        <tr>
+          <th>Trust Signal</th>
+          <th>How to Execute</th>
+          <th>Platform</th>
+          <th>Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Consistency</strong></td>
+          <td>Post at the same time every day. Your audience should be able to set a clock by you. Reliability = trust.</td>
+          <td>All</td>
+          <td>Day 1 onwards</td>
+        </tr>
+        <tr>
+          <td><strong>Accuracy</strong></td>
+          <td>Never post a wrong deadline. If you make an error, correct it immediately and publicly. Accountability builds more trust than perfection.</td>
+          <td>All</td>
+          <td>Always</td>
+        </tr>
+        <tr>
+          <td><strong>Social Proof</strong></td>
+          <td>Feature one real user story per week. Even a screenshot of a positive comment with "Got selected after using NE Career Hub alerts" is powerful.</td>
+          <td>IG + FB</td>
+          <td>Week 2+</td>
+        </tr>
+        <tr>
+          <td><strong>Transparency</strong></td>
+          <td>Monthly post: "This month we posted X jobs, sent Y alerts, helped Z people apply." Real numbers. No ads = state it regularly.</td>
+          <td>FB + Telegram</td>
+          <td>Month 1+</td>
+        </tr>
+        <tr>
+          <td><strong>Scam Warnings</strong></td>
+          <td>Proactively warn about fake government job sites circulating in NE. You become the authority who protects people, not just informs them.</td>
+          <td>All</td>
+          <td>As needed</td>
+        </tr>
+        <tr>
+          <td><strong>Response Speed</strong></td>
+          <td>Reply to every comment and DM within 24 hours, especially questions. One public helpful reply is seen by thousands of silent readers.</td>
+          <td>IG + FB</td>
+          <td>Always</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom: 8px;"><span>NE CAREER HUB</span> · Audience Intelligence Report · Vol. 02</div>
+  <div>Prepared by Claude · Strategy Framework · 2025 · Confidential</div>
+</footer>
+
+</body>
+</html>

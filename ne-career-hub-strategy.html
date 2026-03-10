@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NE Career Hub — Social Media Growth Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f3ee;
+    --accent: #ff4d1c;
+    --gold: #e8b84b;
+    --muted: #6b6b75;
+    --surface: #eeeae1;
+    --border: #d5d0c5;
+    --green: #1a7a4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 48px;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,77,28,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(232,184,75,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.45);
+    font-family: 'Syne', sans-serif;
+  }
+
+  .cover-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+
+  .cover h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 8vw, 100px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+
+  .cover h1 span { color: var(--gold); }
+
+  .cover-desc {
+    font-size: 18px;
+    color: rgba(245,243,238,0.65);
+    max-width: 520px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .cover-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245,243,238,0.1);
+    border-top: 1px solid rgba(245,243,238,0.1);
+    padding-top: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-stat {
+    padding: 24px 0;
+  }
+
+  .cover-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .cover-stat-label {
+    font-size: 12px;
+    color: rgba(245,243,238,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* LAYOUT */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .section {
+    margin-bottom: 80px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .section-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  p { color: #3a3a42; margin-bottom: 16px; }
+
+  /* DIVIDER BAND */
+  .band {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 48px;
+    margin: 0;
+  }
+
+  .band-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* CARDS */
+  .cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .cards-2 { grid-template-columns: 1fr 1fr; }
+  .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .card h3 { font-size: 15px; margin-bottom: 8px; }
+  .card p { font-size: 14px; margin: 0; color: var(--muted); }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    background: rgba(255,77,28,0.05);
+    margin: 24px 0;
+  }
+
+  .highlight p { margin: 0; font-weight: 500; color: var(--ink); }
+
+  /* PILL TAGS */
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+  .pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-size: 13px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  .pill.accent { background: var(--accent); border-color: var(--accent); color: white; }
+  .pill.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin: 24px 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: #3a3a42;
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--surface); }
+
+  /* PLATFORM BLOCKS */
+  .platform {
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .platform-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .platform-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .platform-priority {
+    font-size: 11px;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    font-weight: 600;
+  }
+
+  .priority-high { background: var(--accent); color: white; }
+  .priority-med { background: var(--gold); color: var(--ink); }
+  .priority-low { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+
+  .platform-body { padding: 24px; }
+
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
+
+  .platform-metric { }
+  .platform-metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-family: 'Syne', sans-serif; margin-bottom: 4px; }
+  .platform-metric-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 6px; bottom: 0; width: 1px; background: var(--border); }
+
+  .timeline-item { position: relative; margin-bottom: 40px; }
+  .timeline-dot {
+    position: absolute;
+    left: -32px;
+    top: 4px;
+    width: 13px; height: 13px;
+    background: var(--accent);
+    border: 2px solid var(--paper);
+    outline: 1px solid var(--accent);
+  }
+
+  .timeline-phase {
+    font-size: 11px;
+    font-family: 'Syne', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  /* MONETIZATION */
+  .mono-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .mono-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mono-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .mono-card.secondary::before { background: var(--gold); }
+
+  .mono-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .mono-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'Syne', sans-serif;
+    margin-bottom: 16px;
+  }
+
+  /* BIG QUOTE */
+  .big-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    max-width: 680px;
+    margin-bottom: 24px;
+  }
+
+  .big-quote span { color: var(--gold); }
+
+  /* KPI STRIP */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin: 32px 0;
+  }
+
+  .kpi {
+    padding: 24px 20px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .kpi:last-child { border-right: none; }
+
+  .kpi-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .kpi-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* CONTENT CALENDAR */
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .cal-day-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cal-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 12px;
+    font-size: 12px;
+    color: #3a3a42;
+    min-height: 80px;
+  }
+
+  .cal-type {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    padding: 2px 6px;
+    display: inline-block;
+  }
+
+  .cal-type.job { background: #dff0e8; color: #1a7a4a; }
+  .cal-type.edu { background: #e8f0ff; color: #2563eb; }
+  .cal-type.eng { background: #fff3e0; color: #c2700f; }
+  .cal-type.bts { background: #fce4ec; color: #c62828; }
+  .cal-type.mot { background: #f3e5f5; color: #7b1fa2; }
+
+  /* FOOTER */
+  .report-footer {
+    background: var(--ink);
+    color: rgba(245,243,238,0.4);
+    text-align: center;
+    padding: 40px 48px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .report-footer strong { color: var(--gold); }
+
+  /* UTIL */
+  .text-accent { color: var(--accent); }
+  .text-gold { color: var(--gold); }
+  .text-muted { color: var(--muted); }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mb-0 { margin-bottom: 0; }
+  strong { color: var(--ink); }
+
+  ul { padding-left: 20px; color: #3a3a42; }
+  ul li { margin-bottom: 6px; font-size: 14px; }
+
+  @media print {
+    .cover { min-height: auto; page-break-after: always; }
+    .band { page-break-inside: avoid; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-meta">
+    <span>NE Career Hub — Confidential Strategy Document</span>
+    <span>Social Media Growth Blueprint · 2025</span>
+  </div>
+
+  <div class="cover-body">
+    <div class="tag">$500/hr Strategy Brief</div>
+    <h1>Social<br>Media<br><span>Growth</span><br>Strategy</h1>
+    <p class="cover-desc">A comprehensive playbook to dominate Northeast India's government job discovery space — built on your core USPs and engineered for community, trust, and revenue.</p>
+  </div>
+
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="cover-stat-num">6</div>
+      <div class="cover-stat-label">Platforms Analyzed</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">12mo</div>
+      <div class="cover-stat-label">Execution Roadmap</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">5</div>
+      <div class="cover-stat-label">Revenue Streams</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ SECTION 1: DIAGNOSIS -->
+<div class="page">
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">01 — Diagnosis</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>Where You Stand & Where the Opportunity Is</h2>
+    <p>Before building, we need to be ruthlessly honest about the landscape. The government job niche in Northeast India is <strong>underserved digitally</strong> — most competitors are chaotic, ad-laden, and mobile-unfriendly. That's your moat. Here's the full picture.</p>
+
+    <div class="highlight">
+      <p>📌 Core Insight: Job seekers in NE India are hungry for a <em>trusted, clean, alert-driven</em> source. Most are discovering jobs via WhatsApp forwards — which means they're already primed for notification-based products. You're solving a real pain point.</p>
+    </div>
+
+    <div class="cards cards-3 mt-24">
+      <div class="card">
+        <span class="card-icon">🎯</span>
+        <h3>Your Core USPs</h3>
+        <p>No ads, modern UI, personalised alerts, smart filters. These aren't features — they're <strong>trust signals</strong>.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚡</span>
+        <h3>Market Gap</h3>
+        <p>Competitors like Naukri, Sarkari Result are national & cluttered. Nobody owns "NE government jobs" with a premium feel.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔥</span>
+        <h3>Audience Intent</h3>
+        <p>High-intent, anxious searchers. They refresh daily. They share jobs in groups. Emotion = urgency + aspiration.</p>
+      </div>
+    </div>
+
+    <div class="mt-24">
+      <h3>Competitor Landscape Snapshot</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Competitor</th>
+              <th>What They Do Well</th>
+              <th>Fatal Weakness</th>
+              <th>Your Edge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sarkari Result</strong></td>
+              <td>National reach, SEO dominance</td>
+              <td>Catastrophic UX, ads everywhere, no personalization</td>
+              <td>Clean UI + NE-specific focus</td>
+            </tr>
+            <tr>
+              <td><strong>Local FB Groups</strong></td>
+              <td>High engagement, trusted community</td>
+              <td>Unverified info, no filtering, chaotic</td>
+              <td>Verified listings + smart alerts</td>
+            </tr>
+            <tr>
+              <td><strong>WhatsApp Channels</strong></td>
+              <td>Instant delivery, huge reach</td>
+              <td>No search, no expiry tracking, no personalisation</td>
+              <td>Personalized filters by state/dept</td>
+            </tr>
+            <tr>
+              <td><strong>Govt Websites</strong></td>
+              <td>Official source</td>
+              <td>Confusing, slow, no alerts, terrible mobile experience</td>
+              <td>You aggregate + beautify + alert</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ BAND: POSITIONING -->
+<div class="band">
+  <div class="band-inner">
+    <div class="section-num" style="color: var(--gold); margin-bottom: 20px;">02 — Brand Positioning</div>
+    <p class="big-quote">"NE Career Hub is the <span>calm, trusted navigator</span> for every government job seeker in Northeast India — so you never miss your moment."</p>
+    <p style="color: rgba(245,243,238,0.55); max-width: 580px; font-size: 15px;">This isn't just a tagline. It's your entire content strategy in one sentence. Every post, story, and reel must reinforce one of three things: <strong style="color: var(--gold);">calm clarity</strong>, <strong style="color: var(--gold);">trusted information</strong>, or <strong style="color: var(--gold);">moment-seizing urgency</strong>.</p>
+
+    <div class="cards cards-3 mt-24" style="gap: 1px; background: rgba(255,255,255,0.08);">
+      <div style="background: #0a0a0f; padding: 28px;">
+        <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 12px;">Personality</div>
+        <div style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 8px;">The Reliable Friend Who Works in HR</div>
+        <p style="font-size: 13px; color: rgba(245,243,238,0.5); margin: 0;">Knowledgeable, calm, proactive, never hyped. Speaks the language of your audience.</p>
+      </div>
+      <div style="background: #0a0a0f; padding: 28px;">
+        <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 12px;">Voice</div>
+        <div style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 8px;">Bilingual, Local, Direct</div>
+        <p style="font-size: 13px; color: rgba(245,243,238,0.5); margin: 0;">Mix of English + Assamese/Hindi depending on platform. Always clear, never corporate.</p>
+      </div>
+      <div style="background: #0a0a0f; padding: 28px;">
+        <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 12px;">Visual Identity</div>
+        <div style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 8px;">Clean, Minimal, Credible</div>
+        <p style="font-size: 13px; color: rgba(245,243,238,0.5); margin: 0;">Consistent color palette, icon system, templates. Look as good as the website.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ SECTION 3: AUDIENCE -->
+<div class="page">
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">03 — Audience Targeting</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>Know Exactly Who You're Talking To</h2>
+    <p>Stop thinking "everyone who wants a govt job." Laser-target these three segments. Speak to each differently, but pull them all into the same funnel.</p>
+
+    <div class="cards mt-24" style="grid-template-columns: 1fr; gap: 16px;">
+      
+      <div style="border: 1px solid var(--border); padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start;">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; padding: 12px 18px; min-width: 60px; text-align: center;">01</div>
+        <div>
+          <h3 style="margin-bottom: 4px;">The Fresh Graduate (18–25)</h3>
+          <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Just finished BA/BSc/BCom. Parents expect a govt job. Scrolls Instagram & YouTube daily. Doesn't read long articles. Emotionally anxious about future.</p>
+          <div class="pills">
+            <span class="pill">Instagram Reels</span>
+            <span class="pill">YouTube Shorts</span>
+            <span class="pill">Aspirational content</span>
+            <span class="pill">Success stories</span>
+            <span class="pill accent">HIGHEST SHARE POTENTIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid var(--border); padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start;">
+        <div style="background: var(--gold); color: var(--ink); font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; padding: 12px 18px; min-width: 60px; text-align: center;">02</div>
+        <div>
+          <h3 style="margin-bottom: 4px;">The Active Aspirant (23–32)</h3>
+          <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Already applied to 5+ jobs. Preparing for exams. Lives on Telegram, Facebook groups. Wants deadline alerts, syllabus info, updates. Trust is everything.</p>
+          <div class="pills">
+            <span class="pill">Telegram</span>
+            <span class="pill">Facebook Groups</span>
+            <span class="pill">Deadline alerts</span>
+            <span class="pill">Exam prep tips</span>
+            <span class="pill gold">HIGHEST CONVERSION RATE</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid var(--border); padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start;">
+        <div style="background: var(--surface); border: 1px solid var(--border); font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; padding: 12px 18px; min-width: 60px; text-align: center;">03</div>
+        <div>
+          <h3 style="margin-bottom: 4px;">The Concerned Parent (35–55)</h3>
+          <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Searching jobs for children. Uses Facebook and WhatsApp. Forwards content to family groups. High trust needed — government job = family prestige. Will share your content widely.</p>
+          <div class="pills">
+            <span class="pill">Facebook</span>
+            <span class="pill">WhatsApp</span>
+            <span class="pill">Simple language</span>
+            <span class="pill">State/department filters</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SECTION 4: PLATFORMS -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">04 — Platform Strategy</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>Where to Play & How to Win</h2>
+    <p>Don't spread thin. Here's a precise priority map for each platform based on your audience, content type, and resource reality.</p>
+
+    <!-- TELEGRAM -->
+    <div class="platform">
+      <div class="platform-header">
+        <div class="platform-name">📱 Telegram Channel + Group</div>
+        <span class="platform-priority priority-high">Priority 1 — Start Here</span>
+      </div>
+      <div class="platform-body">
+        <p><strong>Why:</strong> The most powerful platform for your exact use case. Job seekers LIVE here. High-intent, notification-based, no algorithm to fight.</p>
+        <div class="platform-grid">
+          <div>
+            <div class="platform-metric-label">Target — Month 6</div>
+            <div class="platform-metric-val">10K+ Members</div>
+          </div>
+          <div>
+            <div class="platform-metric-label">Post Frequency</div>
+            <div class="platform-metric-val">3–5x Daily</div>
+          </div>
+        </div>
+        <div class="mt-16">
+          <strong>Tactics:</strong>
+          <ul class="mt-8">
+            <li>Auto-push every new job listing directly from your website to Telegram instantly</li>
+            <li>Daily "Jobs Expiring in 48 hours" digest — maximum urgency, maximum opens</li>
+            <li>Weekly "State Spotlight" (e.g., "This week: 14 jobs in Assam")</li>
+            <li>Run a separate group for Q&A, application help, community support</li>
+            <li>Pin a message explaining how to use your website's filters + alerts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="platform">
+      <div class="platform-header">
+        <div class="platform-name">📸 Instagram</div>
+        <span class="platform-priority priority-high">Priority 1 — Brand Builder</span>
+      </div>
+      <div class="platform-body">
+        <p><strong>Why:</strong> Your 18–28 audience is here. Reels are free reach. This is where you build brand credibility and drive website sign-ups.</p>
+        <div class="platform-grid">
+          <div>
+            <div class="platform-metric-label">Target — Month 6</div>
+            <div class="platform-metric-val">5K Followers</div>
+          </div>
+          <div>
+            <div class="platform-metric-label">Post Frequency</div>
+            <div class="platform-metric-val">5x/week + Daily Story</div>
+          </div>
+        </div>
+        <div class="mt-16">
+          <strong>Content Mix (Reels + Carousels + Stories):</strong>
+          <ul class="mt-8">
+            <li><strong>Reels (3x/week):</strong> "Top 5 Govt Jobs in Assam this week" — fast-paced, text-on-screen, trending audio</li>
+            <li><strong>Carousels (2x/week):</strong> "How to apply for [Job X] — step by step" or "Salary breakdown: Grade III govt job"</li>
+            <li><strong>Stories (daily):</strong> Poll ("Are you preparing for APSC?"), countdown timers for expiring jobs, swipe-up to website</li>
+            <li><strong>Monthly:</strong> Success story repost from a user who got a job using NE Career Hub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACEBOOK -->
+    <div class="platform">
+      <div class="platform-header">
+        <div class="platform-name">👥 Facebook Page + Groups</div>
+        <span class="platform-priority priority-high">Priority 1 — Reach Engine</span>
+      </div>
+      <div class="platform-body">
+        <p><strong>Why:</strong> Highest penetration in NE India across all age groups. Groups have insane organic reach. This is your broadest distribution channel.</p>
+        <div class="platform-grid">
+          <div>
+            <div class="platform-metric-label">Target — Month 6</div>
+            <div class="platform-metric-val">8K Followers</div>
+          </div>
+          <div>
+            <div class="platform-metric-label">Post Frequency</div>
+            <div class="platform-metric-val">2x Daily</div>
+          </div>
+        </div>
+        <div class="mt-16">
+          <strong>Tactics:</strong>
+          <ul class="mt-8">
+            <li>Create your own Facebook Group: "NE Government Jobs 2025" — moderate it strictly, no spam, builds trust</li>
+            <li>Share jobs in existing groups (ask permission or join as admin-contributor)</li>
+            <li>Facebook-native video: Long-form "job of the week" walkthroughs perform well with 35+ audience</li>
+            <li>Run occasional ₹500–1000 Facebook Ads targeting Assam/Manipur/Meghalaya job seekers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUTUBE -->
+    <div class="platform">
+      <div class="platform-header">
+        <div class="platform-name">▶ YouTube Shorts + Channel</div>
+        <span class="platform-priority priority-med">Priority 2 — SEO Goldmine</span>
+      </div>
+      <div class="platform-body">
+        <p><strong>Why:</strong> YouTube Shorts get massive reach without subscribers. Long-form videos rank on Google. This drives SEO traffic to your website over time.</p>
+        <div class="platform-grid">
+          <div>
+            <div class="platform-metric-label">Target — Month 6</div>
+            <div class="platform-metric-val">1K Subscribers</div>
+          </div>
+          <div>
+            <div class="platform-metric-label">Post Frequency</div>
+            <div class="platform-metric-val">3 Shorts + 1 Long/week</div>
+          </div>
+        </div>
+        <div class="mt-16">
+          <strong>Tactics:</strong>
+          <ul class="mt-8">
+            <li><strong>Shorts:</strong> Repurpose Instagram Reels. Titles like "Assam Police Recruitment 2025 — Apply Now" get search traffic</li>
+            <li><strong>Long-form:</strong> "Complete Guide to APSC Prelims 2025" — evergreen content that drives sign-ups for months</li>
+            <li>End card on every video: "Get alerts for jobs like this — link in description"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHATSAPP -->
+    <div class="platform">
+      <div class="platform-header">
+        <div class="platform-name">💬 WhatsApp Channel</div>
+        <span class="platform-priority priority-med">Priority 2 — Retention Tool</span>
+      </div>
+      <div class="platform-body">
+        <p><strong>Why:</strong> WhatsApp Channels (new feature) deliver directly to users' notifications. Zero algorithm. Perfect for expiry reminders and daily digests.</p>
+        <div class="mt-16">
+          <strong>Tactics:</strong>
+          <ul class="mt-8">
+            <li>Launch a WhatsApp Channel — post 1–2x daily with top jobs and deadlines</li>
+            <li>Every post includes a CTA: "Set personalised alerts → necareerhub.com"</li>
+            <li>Share the channel link on all other platforms constantly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ SECTION 5: CONTENT -->
+<div class="page" style="padding-top: 0;">
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">05 — Content Strategy</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>The 5 Content Pillars</h2>
+    <p>Every piece of content you create must fall into one of these five buckets. This keeps your feed balanced, your audience engaged, and your brand consistent.</p>
+
+    <div class="cards cards-2 mt-24">
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <span class="card-icon">📋</span>
+        <h3>1. Job Alerts (40% of content)</h3>
+        <p>The core. New openings, expiry countdowns, state-wise roundups. Format: clean graphic + key details + link. Always urgent, always specific.</p>
+        <div class="pills mt-16">
+          <span class="pill">Daily</span>
+          <span class="pill">All platforms</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid #2563eb;">
+        <span class="card-icon">📚</span>
+        <h3>2. Exam Prep & Guides (25%)</h3>
+        <p>Syllabus breakdowns, eligibility guides, "How to apply" walkthroughs. Builds trust and keeps followers engaged between job postings.</p>
+        <div class="pills mt-16">
+          <span class="pill">3x/week</span>
+          <span class="pill">Instagram + YouTube</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid var(--gold);">
+        <span class="card-icon">🌟</span>
+        <h3>3. Success Stories (15%)</h3>
+        <p>"Meet [Name] who got selected for Assam Police after applying via NE Career Hub." UGC gold. Social proof that drives trust and signups.</p>
+        <div class="pills mt-16">
+          <span class="pill">Weekly</span>
+          <span class="pill">Instagram + Facebook</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid #1a7a4a;">
+        <span class="card-icon">💡</span>
+        <h3>4. Engagement & Education (10%)</h3>
+        <p>Polls, quizzes, "Did you know?" facts about NE govt departments, salary comparisons. Algorithms love engagement. So do audiences.</p>
+        <div class="pills mt-16">
+          <span class="pill">2x/week</span>
+          <span class="pill">Instagram Stories + FB</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid #7b1fa2; grid-column: span 2;">
+        <span class="card-icon">🔧</span>
+        <h3>5. Behind-the-Platform (10%)</h3>
+        <p>Show how your alerts work. Demo the filters. "We just added 23 new jobs from Manipur — here's how to filter by department." Makes your product tangible, drives signups, builds brand loyalty.</p>
+        <div class="pills mt-16">
+          <span class="pill">Weekly</span>
+          <span class="pill">All platforms</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-24">
+      <h3>Weekly Content Calendar Template</h3>
+      <div class="cal-grid">
+        <div class="cal-day-label">Monday</div>
+        <div class="cal-day-label">Tuesday</div>
+        <div class="cal-day-label">Wednesday</div>
+        <div class="cal-day-label">Thursday</div>
+        <div class="cal-day-label">Friday</div>
+
+        <div class="cal-item">
+          <span class="cal-type job">Job Alert</span>
+          <div>"Week's Top 10 Govt Jobs in NE India" Carousel</div>
+        </div>
+        <div class="cal-item">
+          <span class="cal-type edu">Education</span>
+          <div>"How to Apply for [Specific Job]" Step-by-step Reel</div>
+        </div>
+        <div class="cal-item">
+          <span class="cal-type eng">Engagement</span>
+          <div>Poll: "Which exam are you preparing for?" + job roundup</div>
+        </div>
+        <div class="cal-item">
+          <span class="cal-type mot">Success Story</span>
+          <div>Feature: Real user who got selected. Inspire + build trust.</div>
+        </div>
+        <div class="cal-item">
+          <span class="cal-type job">Urgency</span>
+          <div>"⚠️ Deadlines this weekend" — expiry alert digest</div>
+        </div>
+      </div>
+      <p class="mt-16" style="font-size: 13px; color: var(--muted);">+ Daily: Telegram/WhatsApp job push notifications, Instagram Stories (job countdown/poll), Facebook post.</p>
+    </div>
+
+    <div class="highlight mt-24">
+      <p>🔑 Content Hook Formula: <strong>Urgency + Specificity + Benefit.</strong> "⚠️ Last 3 days: Assam Forest Dept is hiring 142 posts — Grade III, no exam, apply before Jan 31 →" This beats generic "Jobs available!" every time.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ SECTION 6: GROWTH TACTICS -->
+<div class="band">
+  <div class="band-inner">
+    <div class="section-num" style="color: var(--gold); margin-bottom: 20px;">06 — Growth Tactics</div>
+    <h2 style="color: var(--paper); font-size: clamp(26px, 4vw, 40px); margin-bottom: 32px;">The Moves That Compound</h2>
+
+    <div class="cards cards-2" style="gap: 16px;">
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 24px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 12px;">🔁</span>
+        <h3 style="color: var(--paper); font-size: 15px; margin-bottom: 8px;">Cross-Platform Funneling</h3>
+        <p style="color: rgba(245,243,238,0.5); font-size: 13px; margin: 0;">Every platform drives to website sign-ups for email/in-app alerts. Instagram → link in bio → sign up. Telegram → CTA in every post → sign up. The goal is always: get them into your alert system.</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 24px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 12px;">🤝</span>
+        <h3 style="color: var(--paper); font-size: 15px; margin-bottom: 8px;">Local Micro-Influencer Collabs</h3>
+        <p style="color: rgba(245,243,238,0.5); font-size: 13px; margin: 0;">Partner with NE-based coaching center YouTubers, APSC prep pages (5K–50K followers). Exchange: they mention NE Career Hub, you feature them in a post. No money needed initially.</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 24px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 12px;">🏆</span>
+        <h3 style="color: var(--paper); font-size: 15px; margin-bottom: 8px;">Referral Contests</h3>
+        <p style="color: rgba(245,243,238,0.5); font-size: 13px; margin: 0;">"Share this post + tag 2 friends who want govt jobs → Win ₹500 Amazon voucher." Runs quarterly. Explosive reach for very low cost. Use your existing users to recruit new ones.</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 24px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 12px;">📣</span>
+        <h3 style="color: var(--paper); font-size: 15px; margin-bottom: 8px;">Group Seeding Strategy</h3>
+        <p style="color: rgba(245,243,238,0.5); font-size: 13px; margin: 0;">Join top 20 Facebook Groups and Telegram groups for NE job seekers. Contribute genuine value (share real jobs). Over 60 days, you become the trusted source. Never spam — add value first.</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 24px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 12px;">📧</span>
+        <h3 style="color: var(--paper); font-size: 15px; margin-bottom: 8px;">Email List as a Moat</h3>
+        <p style="color: rgba(245,243,238,0.5); font-size: 13px; margin: 0;">Every social post should push toward email sign-up. A 10K email list is worth more than 50K Instagram followers. Offer a lead magnet: "Free: Complete NE Govt Job Calendar 2025 — PDF."</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 24px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 12px;">🔍</span>
+        <h3 style="color: var(--paper); font-size: 15px; margin-bottom: 8px;">SEO-Driven YouTube</h3>
+        <p style="color: rgba(245,243,238,0.5); font-size: 13px; margin: 0;">Title every video like a search query: "Assam Police Constable 2025 Apply Online" or "UPSC CAPF 2025 Notification NE India." These rank on YouTube AND Google Search for months.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ SECTION 7: MONETIZATION -->
+<div class="page">
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">07 — Monetization</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>5 Revenue Streams — No Compromise on UX</h2>
+    <p>Your biggest USP is <em>no annoying ads</em> — never betray that. Here's how you monetize without compromising user trust. Start with streams 1–2, add others as you scale.</p>
+
+    <div class="mono-grid mt-24">
+      <div class="mono-card">
+        <div class="mono-amount">Stream 1</div>
+        <div class="mono-label">Premium Membership — ₹99–199/month</div>
+        <p style="font-size: 14px; color: #3a3a42;">Offer a "Pro" tier: unlimited filters, earliest alerts (15min before public), resume review, document checklist templates, saved job folders. This is your primary revenue — low price, high volume, recurring.</p>
+        <div class="pills mt-16">
+          <span class="pill">Target: 500 members by Month 6</span>
+        </div>
+      </div>
+
+      <div class="mono-card secondary">
+        <div class="mono-amount">Stream 2</div>
+        <div class="mono-label">Coaching Center Partnerships</div>
+        <p style="font-size: 14px; color: #3a3a42;">Local APSC/SSC coaching centers WANT access to your audience. Offer a sponsored "Recommended Courses" section on your website and occasional sponsored posts on social. Non-intrusive, trust-preserved.</p>
+        <div class="pills mt-16">
+          <span class="pill">₹5K–25K per sponsor/month</span>
+        </div>
+      </div>
+
+      <div class="mono-card secondary">
+        <div class="mono-amount">Stream 3</div>
+        <div class="mono-label">Digital Products</div>
+        <p style="font-size: 14px; color: #3a3a42;">Sell high-quality PDFs: "Complete APSC Prelims Notes 2025," "NE Government Job Eligibility Master Guide," application form templates. One-time purchase. Promote heavily on social.</p>
+        <div class="pills mt-16">
+          <span class="pill">₹99–499 per product</span>
+        </div>
+      </div>
+
+      <div class="mono-card">
+        <div class="mono-amount">Stream 4</div>
+        <div class="mono-label">Telegram Premium Access</div>
+        <p style="font-size: 14px; color: #3a3a42;">Run a free public channel + a paid private group (₹49/month) where members get priority alerts 1 hour early, exclusive Q&A sessions with experts, and interview prep resources.</p>
+        <div class="pills mt-16">
+          <span class="pill">Low friction, recurring</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mono-card mt-16" style="border: 1px solid var(--border); padding: 24px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--gold));"></div>
+      <div class="mono-amount">Stream 5</div>
+      <div class="mono-label">Affiliate & Job Preparation Marketplace (Month 9+)</div>
+      <p style="font-size: 14px; color: #3a3a42;">Partner with platforms like Testbook, Unacademy, or Adda247. Earn affiliate commissions when your users purchase their courses. Fully aligned with your audience's needs. At 10K+ users, this can generate ₹30K–1L/month passively.</p>
+    </div>
+
+    <div class="kpi-strip mt-24">
+      <div class="kpi">
+        <div class="kpi-num">₹50K</div>
+        <div class="kpi-label">Month 6 Revenue Target</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">500</div>
+        <div class="kpi-label">Pro Members Target</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">3</div>
+        <div class="kpi-label">Sponsorship Partners</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">₹2L+</div>
+        <div class="kpi-label">Month 12 Revenue Target</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ SECTION 8: ROADMAP -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">08 — 12-Month Roadmap</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>The Execution Timeline</h2>
+
+    <div class="timeline mt-24">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Month 1–2 — Foundation</div>
+        <div class="timeline-title">Build the Base</div>
+        <ul>
+          <li>Set up all platforms with consistent branding (same handle, same logo, same bio)</li>
+          <li>Launch Telegram Channel — begin daily job posts immediately</li>
+          <li>Create 10 evergreen pieces of content before going live (carousel bank, reel templates)</li>
+          <li>Join 20 Facebook groups and Telegram groups as a genuine contributor</li>
+          <li>Set up email capture on website with free lead magnet (Job Calendar PDF)</li>
+          <li>Launch WhatsApp Channel</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Month 3–4 — Ignition</div>
+        <div class="timeline-title">Drive First 1000 Followers Per Platform</div>
+        <ul>
+          <li>Run first referral contest (₹500 prize — cheap for the reach you'll get)</li>
+          <li>Reach out to 5 NE-based coaching center YouTube channels for cross-promotion</li>
+          <li>Launch YouTube Shorts — repurpose Instagram Reels with searchable titles</li>
+          <li>Start ₹200/day Facebook Ads targeting Assam, Manipur, Meghalaya job seekers</li>
+          <li>Post first "Success Story" feature — even if you need to reach out manually to find one</li>
+          <li>Launch monthly "NE Jobs Report" — a shareable summary that positions you as an authority</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Month 5–6 — Monetize</div>
+        <div class="timeline-title">Turn Audience into Revenue</div>
+        <ul>
+          <li>Launch Pro Membership — target 100 early adopters with launch discount (₹59/month for first 100)</li>
+          <li>Pitch first coaching center sponsor — package: website feature + 4 social posts/month</li>
+          <li>Release first paid digital product (₹199 APSC guide)</li>
+          <li>Launch paid Telegram group alongside free channel</li>
+          <li>Review all metrics, double down on top-performing content types</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-phase">Month 7–12 — Scale</div>
+        <div class="timeline-title">Compound, Systematize, Expand</div>
+        <ul>
+          <li>Hire a part-time content assistant (₹5–8K/month) to handle daily posting</li>
+          <li>Launch affiliate program (Testbook, Adda247 partnerships)</li>
+          <li>Expand to cover Central Government jobs more comprehensively</li>
+          <li>Run quarterly giveaways to maintain growth momentum</li>
+          <li>Consider a dedicated mobile app if website traffic exceeds 50K monthly visitors</li>
+          <li>Build "NE Career Hub Ambassador" program — 1 person per state who shares content locally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ SECTION 9: KPIs -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">09 — KPIs & What to Track</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>Measure What Matters</h2>
+    <p>Vanity metrics (likes, impressions) are distractions. Track these instead, weekly.</p>
+
+    <div class="table-wrap mt-24">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Why It Matters</th>
+            <th>Month 3 Target</th>
+            <th>Month 6 Target</th>
+            <th>Month 12 Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Website sign-ups</strong></td>
+            <td>Core conversion — social to owned audience</td>
+            <td>500</td>
+            <td>3,000</td>
+            <td>15,000</td>
+          </tr>
+          <tr>
+            <td><strong>Email open rate</strong></td>
+            <td>Engagement quality indicator</td>
+            <td>30%+</td>
+            <td>35%+</td>
+            <td>40%+</td>
+          </tr>
+          <tr>
+            <td><strong>Telegram members</strong></td>
+            <td>High-intent audience size</td>
+            <td>2,000</td>
+            <td>10,000</td>
+            <td>40,000</td>
+          </tr>
+          <tr>
+            <td><strong>Instagram followers</strong></td>
+            <td>Brand reach & discovery</td>
+            <td>1,500</td>
+            <td>5,000</td>
+            <td>25,000</td>
+          </tr>
+          <tr>
+            <td><strong>Reel save rate</strong></td>
+            <td>Content utility signal (saves = future use)</td>
+            <td>3%+</td>
+            <td>5%+</td>
+            <td>7%+</td>
+          </tr>
+          <tr>
+            <td><strong>Pro members</strong></td>
+            <td>Primary revenue driver</td>
+            <td>50</td>
+            <td>500</td>
+            <td>3,000</td>
+          </tr>
+          <tr>
+            <td><strong>Monthly revenue</strong></td>
+            <td>Business health</td>
+            <td>₹5K</td>
+            <td>₹50K</td>
+            <td>₹2L+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ SECTION 10: QUICK WINS -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">10 — Start Monday</span>
+      <div class="section-line"></div>
+    </div>
+
+    <h2>Your First 7 Days Action Plan</h2>
+
+    <div class="cards mt-24" style="grid-template-columns: 1fr; gap: 12px;">
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 1</div>
+        <div>
+          <strong>Set up all platform handles</strong> with identical branding. Write a clear bio: "🇮🇳 Govt job alerts for NE India | No ads | Smart filters | necareerhub.com" — use this on every platform.</div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 2</div>
+        <div><strong>Launch Telegram Channel.</strong> Post 5 jobs immediately. Invite every contact personally. Share the link on all platforms.</div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 3</div>
+        <div><strong>Create 5 Instagram Reel templates</strong> in Canva. Use your brand colors. Batch-create content for 2 weeks. Consistency matters more than perfection early on.</div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 4</div>
+        <div><strong>Join 10 Facebook groups</strong> about NE government jobs. Don't post yet — read, understand the audience, see what questions repeat.</div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 5</div>
+        <div><strong>Create your lead magnet</strong> — a simple PDF: "NE Government Job Calendar 2025 — All Upcoming Recruitment." Add email capture form to website homepage. This is your most important long-term asset.</div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--accent); color: white; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 6</div>
+        <div><strong>Post your first Instagram Reel.</strong> "Top 5 Government Jobs in NE India this week." Upload to YouTube Shorts same day. Cross-post to Facebook. Announce on Telegram.</div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border: 1px solid var(--border);">
+        <div style="background: var(--ink); color: var(--paper); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; padding: 8px 12px; min-width: 48px; text-align: center; flex-shrink: 0;">Day 7</div>
+        <div style="color: var(--ink);"><strong>Review Day 1–6.</strong> What got traction? Double down. Set up a simple content scheduling tool (Buffer or Meta Business Suite). Plan week 2. Commit to showing up every single day for 90 days — that's all it takes to win this niche.</div>
+      </div>
+    </div>
+
+    <div class="highlight mt-24">
+      <p>⚡ Final Thought: Your competitors are all noise. You have a product that genuinely serves users better — no ads, smart alerts, clean UI. Your social media job is simply to <strong>let people know you exist, and prove you're trustworthy.</strong> Do that consistently for 6 months, and this brand will dominate NE India's government job space.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <strong>NE Career Hub — Social Media Growth Strategy</strong><br>
+  Prepared exclusively for NE Career Hub · Confidential · 2025<br><br>
+  Strategy Framework by <strong>Claude</strong> · Built on audience insight, platform behavior analysis & monetization best practices
+</div>
+
+</body>
+</html>

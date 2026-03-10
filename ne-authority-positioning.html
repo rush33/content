@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authority Positioning Strategy — NE Career Hub Founder</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Epilogue:wght@300;400;500;600;700&family=Epilogue+Italic:ital,wght@1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f3ec;
+    --warm-white: #faf8f4;
+    --ink: #1a1612;
+    --ink2: #2d2820;
+    --brown: #6b4f35;
+    --gold: #c9963a;
+    --gold-light: #e8c97a;
+    --rust: #c04a2a;
+    --sage: #4a6741;
+    --border: #ddd5c5;
+    --border-light: #ede8df;
+    --muted: #8a7f72;
+    --surface: #f0ebe1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Epilogue', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--ink);
+    color: var(--cream);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .cover-accent-line {
+    position: absolute;
+    top: 0; left: 72px;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(201,150,58,0.4) 30%, rgba(201,150,58,0.4) 70%, transparent);
+    pointer-events: none;
+  }
+
+  .cover-top {
+    padding: 44px 60px 44px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    position: relative; z-index: 1;
+  }
+
+  .cover-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .cover-doc-num {
+    font-size: 11px;
+    color: rgba(247,243,236,0.3);
+    letter-spacing: 0.1em;
+    font-family: 'Epilogue', sans-serif;
+  }
+
+  .cover-body {
+    padding: 60px 60px 60px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative; z-index: 1;
+  }
+
+  .cover-overline {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .cover-overline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 9vw, 116px);
+    font-weight: 700;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    max-width: 700px;
+  }
+
+  .cover h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-desc {
+    font-size: 16px;
+    color: rgba(247,243,236,0.55);
+    max-width: 480px;
+    font-weight: 300;
+    line-height: 1.7;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  .cover-bottom {
+    padding: 0 60px 0 100px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative; z-index: 1;
+  }
+
+  .cover-kpi {
+    padding: 28px 20px 28px 0;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .cover-kpi:last-child { border-right: none; padding-left: 20px; }
+
+  .cover-kpi-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+
+  .cover-kpi-l {
+    font-size: 11px;
+    color: rgba(247,243,236,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 880px; margin: 0 auto; padding: 0 60px; }
+
+  section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .sec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+
+  .sec-rule { flex: 1; height: 1px; background: var(--border); }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4.5vw, 54px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h2 em { font-style: italic; color: var(--rust); }
+
+  h3 {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12px;
+    color: var(--ink2);
+  }
+
+  p { color: #5a4e44; margin-bottom: 14px; }
+  p strong { color: var(--ink); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── POSITIONING STATEMENT ── */
+  .position-box {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 52px 56px;
+    position: relative;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+
+  .position-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 36px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    font-weight: 700;
+    color: rgba(201,150,58,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .position-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-family: 'Epilogue', sans-serif;
+  }
+
+  .position-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--cream);
+    max-width: 680px;
+    position: relative; z-index: 1;
+  }
+
+  .position-statement span { color: var(--gold-light); font-style: italic; }
+
+  /* ── ARCHETYPE ── */
+  .archetype-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .archetype-cell {
+    background: var(--warm-white);
+    padding: 28px 24px;
+  }
+
+  .arch-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+  .arch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .arch-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 12px; }
+  .arch-desc { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* ── PILLARS ── */
+  .pillars { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); }
+
+  .pillar {
+    display: grid;
+    grid-template-columns: 64px 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar:last-child { border-bottom: none; }
+
+  .pillar-num {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    padding: 28px 0;
+  }
+
+  .pillar-main {
+    padding: 24px 24px;
+    border-right: 1px solid var(--border);
+  }
+
+  .pillar-action { padding: 24px 24px; background: var(--warm-white); }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .pillar-main p { font-size: 13px; margin: 0; }
+  .pillar-action h3 { margin-bottom: 10px; }
+
+  .pillar-action ul { padding-left: 0; list-style: none; }
+  .pillar-action ul li {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .pillar-action ul li:last-child { border-bottom: none; }
+  .pillar-action ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
+
+  /* ── PLATFORM STRATEGY ── */
+  .plat-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+
+  .plat-card {
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .plat-card-head {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plat-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .plat-role {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 500;
+  }
+
+  .role-trust { background: rgba(74,103,65,0.12); color: var(--sage); border: 1px solid rgba(74,103,65,0.2); }
+  .role-reach { background: rgba(192,74,42,0.1); color: var(--rust); border: 1px solid rgba(192,74,42,0.2); }
+  .role-career { background: rgba(201,150,58,0.12); color: var(--brown); border: 1px solid rgba(201,150,58,0.2); }
+
+  .plat-card-body { padding: 20px; }
+  .plat-card-body p { font-size: 13px; margin-bottom: 12px; }
+
+  .plat-what {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .plat-topics { display: flex; flex-direction: column; gap: 4px; }
+  .plat-topic {
+    font-size: 12px;
+    color: var(--ink2);
+    padding: 5px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+  }
+
+  /* ── BIO FORMULAS ── */
+  .bio-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+
+  .bio-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .bio-card-head {
+    padding: 14px 18px;
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .bio-platform {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .bio-card-head h3 {
+    color: var(--cream);
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .bio-card-body {
+    padding: 18px;
+    background: var(--warm-white);
+  }
+
+  .bio-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+    border-left: 2px solid var(--gold);
+    padding-left: 14px;
+    margin-bottom: 12px;
+  }
+
+  .bio-note { font-size: 11px; color: var(--muted); margin: 0; }
+
+  /* ── CONTENT THEMES ── */
+  .themes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+
+  .theme-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+    background: var(--warm-white);
+    position: relative;
+  }
+
+  .theme-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+  }
+
+  .theme-card.t1::after { background: var(--gold); }
+  .theme-card.t2::after { background: var(--rust); }
+  .theme-card.t3::after { background: var(--sage); }
+  .theme-card.t4::after { background: var(--brown); }
+
+  .theme-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .t1 .theme-pct { color: var(--gold); }
+  .t2 .theme-pct { color: var(--rust); }
+  .t3 .theme-pct { color: var(--sage); }
+  .t4 .theme-pct { color: var(--brown); }
+
+  .theme-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .theme-card p { font-size: 13px; margin-bottom: 12px; }
+
+  .theme-examples { display: flex; flex-direction: column; gap: 4px; }
+
+  .theme-ex {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 4px 10px;
+    background: var(--surface);
+    border-left: 2px solid var(--border);
+    font-style: italic;
+  }
+
+  /* ── QUOTE / PULL ── */
+  .pull-quote {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 52px 60px;
+    margin: 48px 0;
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+
+  .pull-quote p span { color: var(--gold-light); }
+
+  .pull-credit {
+    font-size: 11px;
+    color: rgba(247,243,236,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  /* ── ROADMAP ── */
+  .roadmap { margin: 32px 0; }
+
+  .road-phase {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: -1px;
+  }
+
+  .road-time {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .road-time-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .road-time-l {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(247,243,236,0.3);
+  }
+
+  .road-content { padding: 24px 28px; background: var(--warm-white); }
+
+  .road-phase-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .road-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .road-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .road-task {
+    font-size: 12px;
+    color: var(--ink2);
+    padding: 4px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--ink);
+    color: rgba(247,243,236,0.6);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 16px;
+    text-align: left;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 500;
+  }
+  td { padding: 14px 16px; border-bottom: 1px solid var(--border-light); color: #5a4e44; vertical-align: top; }
+  td strong { color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--warm-white); }
+
+  /* ── MISTAKES ── */
+  .mistakes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+
+  .mistake-card {
+    border: 1px solid rgba(192,74,42,0.2);
+    background: rgba(192,74,42,0.03);
+    padding: 20px 22px;
+  }
+
+  .mistake-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(192,74,42,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .mistake-card h3 { font-size: 13px; color: var(--rust); margin-bottom: 6px; text-transform: none; letter-spacing: 0; }
+  .mistake-card p { font-size: 13px; margin: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(247,243,236,0.3);
+    text-align: center;
+    padding: 44px 60px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Epilogue', sans-serif;
+  }
+
+  footer span { color: var(--gold); }
+
+  .highlight-band {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 60px;
+    max-width: 100%;
+  }
+
+  .highlight-band-inner { max-width: 880px; margin: 0 auto; }
+
+  .hb-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 12px; }
+
+  .hb-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.2vw, 26px);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+    max-width: 720px;
+  }
+
+  .hb-text em { font-style: italic; color: var(--rust); }
+
+  ul.clean { list-style: none; padding: 0; }
+  ul.clean li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 14px;
+    color: #5a4e44;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER -->
+<div class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-accent-line"></div>
+
+  <div class="cover-top">
+    <div class="cover-logo">NE Career Hub</div>
+    <div class="cover-doc-num">Authority Positioning Strategy · 2025</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-overline">Personal Branding Blueprint</div>
+    <h1>Become<br>the <em>Face</em><br>of a<br>Movement</h1>
+    <p class="cover-desc">A complete authority positioning system to transform you from "the person behind NE Career Hub" into the most trusted name in Northeast India's government careers space — across Instagram, Facebook, and LinkedIn.</p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-kpi">
+      <div class="cover-kpi-n">3</div>
+      <div class="cover-kpi-l">Platforms Mapped</div>
+    </div>
+    <div class="cover-kpi">
+      <div class="cover-kpi-n">4</div>
+      <div class="cover-kpi-l">Content Pillars</div>
+    </div>
+    <div class="cover-kpi">
+      <div class="cover-kpi-n">1</div>
+      <div class="cover-kpi-l">Clear Archetype</div>
+    </div>
+    <div class="cover-kpi" style="padding-left: 20px;">
+      <div class="cover-kpi-n">90</div>
+      <div class="cover-kpi-l">Day Launch Plan</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════ THE CORE INSIGHT -->
+<div class="highlight-band">
+  <div class="highlight-band-inner">
+    <div class="hb-label">The Strategic Imperative</div>
+    <p class="hb-text">Right now, NE Career Hub is a platform. The opportunity is to make it <em>a person people trust</em> — because people follow people, not products. When you become the face, the platform gains a soul, and a soul is impossible to copy.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════ SECTION 1: POSITIONING -->
+<div class="page">
+<section>
+  <div class="sec-header">
+    <span class="sec-num">01 — Authority Positioning</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>Your Unique<br><em>Position to Own</em></h2>
+  <p>Most people in your space are either <strong>generic job aggregators</strong> (faceless, cold, just links) or <strong>coaching teachers</strong> (exam-focused, not opportunity-focused). You sit in a completely unoccupied middle ground — and that's your power.</p>
+
+  <div class="position-box">
+    <div class="position-label">Your Authority Positioning Statement</div>
+    <p class="position-statement">I am the founder who built Northeast India's <span>cleanest government job platform</span> — and I share everything I've learned about navigating the system, so no one in the region misses their opportunity again.</p>
+  </div>
+
+  <p>This positioning works because it combines three things competitors can't copy: <strong>the platform credibility</strong> (you built something real), <strong>the regional identity</strong> (you're one of them), and <strong>the mission</strong> (you genuinely want people to succeed). That trifecta = authority that feels earned, not manufactured.</p>
+
+  <div class="archetype-grid mt-24" style="margin-top: 32px;">
+    <div class="archetype-cell">
+      <span class="arch-icon">🧭</span>
+      <div class="arch-title">The Guide</div>
+      <div class="arch-sub">Primary Archetype</div>
+      <p class="arch-desc">You've mapped the territory. You know which paths lead to jobs and which lead to wasted years. Your role is to share the map — clearly, honestly, without a hidden agenda.</p>
+    </div>
+    <div class="archetype-cell" style="background: var(--surface);">
+      <span class="arch-icon">🏗️</span>
+      <div class="arch-title">The Builder</div>
+      <div class="arch-sub">Secondary Archetype</div>
+      <p class="arch-desc">You didn't just talk about the problem — you built the solution. This gives you credibility that coaches and commentators will never have. Lean into "I built this because I saw the gap."</p>
+    </div>
+    <div class="archetype-cell">
+      <span class="arch-icon">🌏</span>
+      <div class="arch-title">The Local Champion</div>
+      <div class="arch-sub">Differentiator</div>
+      <p class="arch-desc">You are from here. You understand the specific struggles of NE India's job seekers — the distance from information, the limited resources, the local exam landscape. No outsider can replicate this.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ SECTION 2: AUTHORITY PILLARS -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">02 — The 4 Authority Pillars</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>What You Talk About.<br><em>Always.</em></h2>
+  <p>Authority is built by being consistently associated with specific ideas. These four pillars define your intellectual territory. Everything you post publicly — across every platform — should live inside one of these four boxes.</p>
+
+  <div class="pillars mt-32" style="margin-top: 32px;">
+
+    <div class="pillar">
+      <div class="pillar-num">I</div>
+      <div class="pillar-main">
+        <div class="pillar-title">Government Jobs Intelligence</div>
+        <p>You know the landscape better than anyone. Which jobs are coming, which are worth applying to, what the competition looks like, what the real odds are. Share this knowledge generously and specifically. This is your most credible territory.</p>
+      </div>
+      <div class="pillar-action">
+        <h3>Content Executions</h3>
+        <ul>
+          <li>"Which NE state has the most open govt jobs right now"</li>
+          <li>Salary breakdowns nobody talks about</li>
+          <li>Hidden jobs with low competition</li>
+          <li>Upcoming recruitment calendar predictions</li>
+          <li>The real odds: how many apply vs. how many get selected</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">II</div>
+      <div class="pillar-main">
+        <div class="pillar-title">The Builder's Journey</div>
+        <p>You built a platform from scratch to solve a real problem. This story is fascinating, relatable, and completely unique to you. Sharing the behind-the-scenes of building NE Career Hub makes your personal brand inseparable from the product's trust.</p>
+      </div>
+      <div class="pillar-action">
+        <h3>Content Executions</h3>
+        <ul>
+          <li>"Why I built NE Career Hub" — origin story post</li>
+          <li>Monthly platform update: users helped, jobs posted</li>
+          <li>Lessons from building a product in NE India</li>
+          <li>Mistakes made and what they taught you</li>
+          <li>Feature reveals and why you built them</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">III</div>
+      <div class="pillar-main">
+        <div class="pillar-title">NE India's Career Future</div>
+        <p>Zoom out from individual jobs to the bigger picture. What does the career landscape in NE India look like in 5 years? What opportunities are emerging? This macro-level thinking positions you as a strategic thinker, not just a job-poster.</p>
+      </div>
+      <div class="pillar-action">
+        <h3>Content Executions</h3>
+        <ul>
+          <li>Opinion pieces on NE's employment situation</li>
+          <li>"Why NE India is underserved by career platforms"</li>
+          <li>Emerging sectors creating govt jobs in the region</li>
+          <li>State budget analysis for job creation implications</li>
+          <li>LinkedIn articles on NE India's workforce</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">IV</div>
+      <div class="pillar-main">
+        <div class="pillar-title">Success Stories & Social Proof</div>
+        <p>Every person who finds a job through NE Career Hub is proof that your mission is working. Celebrating them publicly does three things: rewards them, inspires others, and validates your platform's impact. This is the most shareable content you will ever make.</p>
+      </div>
+      <div class="pillar-action">
+        <h3>Content Executions</h3>
+        <ul>
+          <li>Monthly "Selected" feature: real user, real story</li>
+          <li>Before/after: what life looked like pre vs. post selection</li>
+          <li>"She set an alert. Got notified. Got the job." short posts</li>
+          <li>User milestones: 1,000th alert sent, 10,000th user</li>
+          <li>Community spotlight: aspirants still on the journey</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ SECTION 3: PLATFORM PLAYBOOK -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">03 — Platform-by-Platform Playbook</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>Same Person,<br><em>Three Different Voices</em></h2>
+  <p>Your core identity is fixed. But how you express it must flex for each platform's culture, audience, and format. This is not being fake — it's being fluent. A doctor speaks differently to patients, colleagues, and investors. You do the same.</p>
+
+  <div class="plat-cards">
+
+    <div class="plat-card">
+      <div class="plat-card-head">
+        <div class="plat-name" style="color: #E1306C;">Instagram</div>
+        <span class="plat-role role-reach">Discovery</span>
+      </div>
+      <div class="plat-card-body">
+        <p><strong>Persona:</strong> The relatable, ambitious local builder. You're one of them — but you've done something remarkable. Show your face. Be real. Be aspirational without being distant.</p>
+        <div class="plat-what">Your personal content topics</div>
+        <div class="plat-topics">
+          <div class="plat-topic">Your origin story in Reels (30–60 sec)</div>
+          <div class="plat-topic">"Day in my life building NE Career Hub"</div>
+          <div class="plat-topic">Behind-the-scenes: how you find & verify jobs</div>
+          <div class="plat-topic">React to a user success story on camera</div>
+          <div class="plat-topic">Opinion: "Why NE India deserves better"</div>
+          <div class="plat-topic">Your workspace, your process, your wins</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-card-head">
+        <div class="plat-name" style="color: #1877F2;">Facebook</div>
+        <span class="plat-role role-trust">Trust</span>
+      </div>
+      <div class="plat-card-body">
+        <p><strong>Persona:</strong> The knowledgeable, community-minded local expert. Write with warmth. Use local language where natural. Parents and job seekers alike should feel like they're reading from someone they personally know.</p>
+        <div class="plat-what">Your personal content topics</div>
+        <div class="plat-topics">
+          <div class="plat-topic">Long-form opinion: "What's wrong with how we search for jobs in NE"</div>
+          <div class="plat-topic">Personal reflection posts: lessons from building</div>
+          <div class="plat-topic">Bilingual posts when addressing parents directly</div>
+          <div class="plat-topic">Community Q&A: answer job questions in public</div>
+          <div class="plat-topic">Milestone announcements with personal note</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-card-head">
+        <div class="plat-name" style="color: #0A66C2;">LinkedIn</div>
+        <span class="plat-role role-career">Authority</span>
+      </div>
+      <div class="plat-card-body">
+        <p><strong>Persona:</strong> The founder-thinker. This is your most professional voice. LinkedIn is where sponsors, media, investors, and partner organizations discover you. Make every post shareable and citable.</p>
+        <div class="plat-what">Your personal content topics</div>
+        <div class="plat-topics">
+          <div class="plat-topic">Founder essays: building in NE India</div>
+          <div class="plat-topic">Data insights: NE India's job market trends</div>
+          <div class="plat-topic">Platform milestones (users, jobs, alerts)</div>
+          <div class="plat-topic">Opinion: govt recruitment reform needed</div>
+          <div class="plat-topic">Lessons from building a niche platform</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════ SECTION 4: BIO + HEADLINE COPY -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">04 — Your Bios & Headlines</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>Words That Make<br>People <em>Follow You</em></h2>
+  <p>Your bio is the most read piece of content on your profile. It does one job: convert a visitor into a follower. Here are ready-to-use bios calibrated for each platform's psychology.</p>
+
+  <div class="bio-grid">
+
+    <div class="bio-card">
+      <div class="bio-card-head">
+        <div class="bio-platform">Instagram</div>
+        <h3>Short, punchy, relatable</h3>
+      </div>
+      <div class="bio-card-body">
+        <div class="bio-text">Founder @necareerhub 🏔️<br>Built NE India's cleanest govt job platform — no ads, real alerts<br>Helping you never miss your shot 🎯<br>↓ Set your free job alerts</div>
+        <p class="bio-note">Use your actual platform handle. Add location flag for NE identity. Link goes directly to sign-up / alert page, not homepage.</p>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-head">
+        <div class="bio-platform">Facebook</div>
+        <h3>Warm, community-first</h3>
+      </div>
+      <div class="bio-card-body">
+        <div class="bio-text">I built NE Career Hub because I was tired of seeing people from our region miss government job opportunities due to lack of information. Now we alert 10,000+ job seekers. Join us.</div>
+        <p class="bio-note">Facebook allows longer bios. Tell the human story. Use first person. The mission statement converts lurkers into loyal followers.</p>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-head">
+        <div class="bio-platform">LinkedIn</div>
+        <h3>Founder-credibility focused</h3>
+      </div>
+      <div class="bio-card-body">
+        <div class="bio-text">Founder, NE Career Hub — Northeast India's leading government job platform. Building tools that connect NE India's talent to opportunity. Writing about careers, tech, and building in underserved markets.</div>
+        <p class="bio-note">LinkedIn headline should be: "Founder, NE Career Hub | Connecting NE India to Government Opportunities | [City, Assam]" — keywords matter for search here.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ══════════════ PULL QUOTE -->
+</div>
+
+<div class="pull-quote" style="margin: 0;">
+  <div style="max-width: 880px; margin: 0 auto; padding: 0 60px;">
+    <p>"You are not competing with other job sites. You are competing with <span>anonymity</span> — the state of being unknown. The moment people in NE India know your name and associate it with trustworthy job information, the game is over. You win."</p>
+    <p class="pull-credit">— The single strategic truth driving this entire document</p>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══════════════ SECTION 5: CONTENT THEMES -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">05 — Personal Content Themes</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>What <em>You</em> Post<br>vs. What Your Page Posts</h2>
+  <p>This distinction is critical. Your <strong>platform page</strong> posts job alerts — that's functional content. Your <strong>personal brand</strong> posts human content that makes people trust and follow the person behind the platform. Here's the mix for your personal posts specifically.</p>
+
+  <div class="themes">
+    <div class="theme-card t1">
+      <div class="theme-pct">35%</div>
+      <div class="theme-name">The Founder Story</div>
+      <p>Why you built it, what you saw, what it took, what's next. Nobody else has this story. It is yours completely and it makes you irreplaceable.</p>
+      <div class="theme-examples">
+        <div class="theme-ex">"Why I quit [X] to build NE Career Hub"</div>
+        <div class="theme-ex">"The day I almost gave up on the platform"</div>
+        <div class="theme-ex">"What our 10,000th user meant to me"</div>
+        <div class="theme-ex">"How I built the alert system — and why"</div>
+      </div>
+    </div>
+
+    <div class="theme-card t2">
+      <div class="theme-pct">30%</div>
+      <div class="theme-name">Insider Knowledge</div>
+      <p>The information only someone who runs a job platform would know. Data, patterns, observations. This is your authority on display — not claimed, demonstrated.</p>
+      <div class="theme-examples">
+        <div class="theme-ex">"After tracking 500+ NE govt jobs, here's what I've learned"</div>
+        <div class="theme-ex">"The 3 jobs that always get the least applications"</div>
+        <div class="theme-ex">"Why most people apply wrong — and don't know it"</div>
+        <div class="theme-ex">"Which NE state is hiring the most right now and why"</div>
+      </div>
+    </div>
+
+    <div class="theme-card t3">
+      <div class="theme-pct">20%</div>
+      <div class="theme-name">Community Wins</div>
+      <p>Celebrating the people you serve. Every selected candidate you feature is a story that validates your mission, builds community pride, and earns emotional loyalty that no ad can buy.</p>
+      <div class="theme-examples">
+        <div class="theme-ex">"Congratulations to [Name] from [District] — selected!"</div>
+        <div class="theme-ex">"She messaged me after getting her selection letter"</div>
+        <div class="theme-ex">"This is why I built NE Career Hub" + user story</div>
+        <div class="theme-ex">Monthly: "X people found jobs this month via NE Career Hub"</div>
+      </div>
+    </div>
+
+    <div class="theme-card t4">
+      <div class="theme-pct">15%</div>
+      <div class="theme-name">Opinion & Vision</div>
+      <p>Your take on the big picture. NE India's career landscape, what needs to change, where it's heading. Opinion content is the highest-authority content that exists — it attracts media, partners, and serious followers.</p>
+      <div class="theme-examples">
+        <div class="theme-ex">"NE India has a talent surplus and an information deficit"</div>
+        <div class="theme-ex">"What would happen if every aspirant had perfect information?"</div>
+        <div class="theme-ex">"The real reason people miss govt job deadlines"</div>
+        <div class="theme-ex">"What I wish the government would change about recruitment"</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════ SECTION 6: DIFFERENTIATION -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">06 — Standing Apart from Competitors</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>Why No One Can<br>Copy <em>You</em></h2>
+  <p>There will be other job platforms. There will be other accounts posting government job alerts. But there is only one person who built NE Career Hub, from this region, with this story. Here's how that translates into a competition-proof positioning.</p>
+
+  <div class="table-wrap" style="margin-top: 32px;">
+    <table>
+      <thead>
+        <tr>
+          <th>What Others Do</th>
+          <th>What You Do Instead</th>
+          <th>Why It Wins</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Post job links anonymously</td>
+          <td><strong>Show your face, share your story</strong></td>
+          <td>People trust people. Anonymous = forgettable. You = memorable.</td>
+        </tr>
+        <tr>
+          <td>Copy-paste official notifications</td>
+          <td><strong>Translate, simplify, and add context</strong></td>
+          <td>You add value they can't get anywhere else. That's why they follow you.</td>
+        </tr>
+        <tr>
+          <td>Same content on every platform</td>
+          <td><strong>Platform-native voice for each channel</strong></td>
+          <td>Feels organic, not broadcast. Builds genuine community per platform.</td>
+        </tr>
+        <tr>
+          <td>Focus only on job posts</td>
+          <td><strong>Share the journey of building the platform</strong></td>
+          <td>Your story makes you the brand. Impossible to replicate.</td>
+        </tr>
+        <tr>
+          <td>Sell ad space immediately</td>
+          <td><strong>Build trust first, monetize second</strong></td>
+          <td>Long-term loyalty over short-term revenue. Sponsors pay more for trusted audiences.</td>
+        </tr>
+        <tr>
+          <td>Stay silent on industry issues</td>
+          <td><strong>Have and share strong opinions</strong></td>
+          <td>Opinion = authority. Authority = media coverage, speaking invites, partnership opportunities.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+
+<!-- ══════════════ SECTION 7: 90-DAY LAUNCH -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">07 — 90-Day Personal Brand Launch</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>The First 90 Days:<br><em>From Invisible to Known</em></h2>
+  <p>Authority isn't built overnight, but it can be built fast with consistency and intention. This roadmap takes you from "the person behind a platform" to a recognized name in your space — in 90 days of focused action.</p>
+
+  <div class="roadmap">
+
+    <div class="road-phase">
+      <div class="road-time">
+        <div class="road-time-n">D 1–10</div>
+        <div class="road-time-l">Foundation</div>
+      </div>
+      <div class="road-content">
+        <div class="road-phase-label">Phase 1 — Set the Stage</div>
+        <div class="road-title">Build Your Foundation Before You Broadcast</div>
+        <div class="road-tasks">
+          <span class="road-task">Update all 3 platform bios with new positioning</span>
+          <span class="road-task">Professional profile photo (same on all platforms)</span>
+          <span class="road-task">Write your origin story — the full 500-word version</span>
+          <span class="road-task">Record your "Why I built NE Career Hub" Reel</span>
+          <span class="road-task">Identify 5 users willing to share their success story</span>
+          <span class="road-task">Create a consistent visual template for personal posts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-time">
+        <div class="road-time-n">D 11–30</div>
+        <div class="road-time-l">Launch</div>
+      </div>
+      <div class="road-content">
+        <div class="road-phase-label">Phase 2 — Go Public With Your Story</div>
+        <div class="road-title">Introduce Yourself to Your Own Audience</div>
+        <div class="road-tasks">
+          <span class="road-task">Post origin story Reel on Instagram (your most important post)</span>
+          <span class="road-task">Long-form "why I built this" post on Facebook</span>
+          <span class="road-task">First LinkedIn article: "NE India's career information gap"</span>
+          <span class="road-task">Feature first user success story publicly</span>
+          <span class="road-task">Post 1 personal insight per week ("After tracking 200+ jobs I learned…")</span>
+          <span class="road-task">Respond personally to every comment on personal posts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-time">
+        <div class="road-time-n">D 31–60</div>
+        <div class="road-time-l">Build</div>
+      </div>
+      <div class="road-content">
+        <div class="road-phase-label">Phase 3 — Establish the Rhythm</div>
+        <div class="road-title">Consistency Becomes Recognition</div>
+        <div class="road-tasks">
+          <span class="road-task">2 personal posts/week across platforms (in addition to job content)</span>
+          <span class="road-task">Weekly LinkedIn post — insider insight or opinion piece</span>
+          <span class="road-task">First platform milestone post ("X users helped this month")</span>
+          <span class="road-task">Reach out to 2 NE-based media outlets with your story</span>
+          <span class="road-task">Start "monthly letter" format — personal note to your community</span>
+          <span class="road-task">Post monthly: "What I learned building NE Career Hub this month"</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-time">
+        <div class="road-time-n">D 61–90</div>
+        <div class="road-time-l">Authority</div>
+      </div>
+      <div class="road-content">
+        <div class="road-phase-label">Phase 4 — Establish Thought Leadership</div>
+        <div class="road-title">From Known to Respected</div>
+        <div class="road-tasks">
+          <span class="road-task">Pitch your story to 1 NE India news outlet or podcast</span>
+          <span class="road-task">Host a live Q&A on Instagram or Facebook (job guidance)</span>
+          <span class="road-task">Publish your first "state of NE India's job market" analysis</span>
+          <span class="road-task">Connect with 3 potential sponsors on LinkedIn personally</span>
+          <span class="road-task">Create a "year in review" post that goes deep on impact</span>
+          <span class="road-task">Announce first Pro membership — founder note explaining why</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ SECTION 8: MISTAKES TO AVOID -->
+<section>
+  <div class="sec-header">
+    <span class="sec-num">08 — The 6 Mistakes That Kill Personal Brands</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>What Not to Do<br><em>Under Any Circumstance</em></h2>
+  <p>Most personal brands fail not from lack of content but from strategic errors that quietly erode trust. These are the six most common — and most damaging — mistakes in your specific niche.</p>
+
+  <div class="mistakes">
+    <div class="mistake-card">
+      <div class="mistake-num">01</div>
+      <h3>Hiding Behind Your Platform</h3>
+      <p>Posting only from the brand page, never from your personal perspective. Platforms are forgettable. People are not. Show your face, share your opinion, be a person — not a logo.</p>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-num">02</div>
+      <h3>Copying National Competitors' Voice</h3>
+      <p>Sounding like Sarkari Result or Naukri — corporate, neutral, impersonal. Your regional, personal, authentic voice is your greatest competitive advantage. Never neutralize it to seem "professional."</p>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-num">03</div>
+      <h3>Posting Wrong Information Once</h3>
+      <p>A single wrong deadline or incorrect salary figure destroys months of trust-building. Verify everything twice. If you make an error, correct it publicly and immediately. Accountability is more powerful than perfection.</p>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-num">04</div>
+      <h3>Inconsistency for Weeks at a Time</h3>
+      <p>Going silent for 2+ weeks, then posting in bursts. In a trust-based niche, consistency is the product. Your audience needs to feel you're always there. Even one post per week beats two weeks of silence.</p>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-num">05</div>
+      <h3>Monetizing Before Trust Is Built</h3>
+      <p>Pitching paid products or sponsorships before you've given massive value for free. The sequence is: give → give → give → earn trust → monetize. Skipping steps destroys credibility in a community-based niche.</p>
+    </div>
+    <div class="mistake-card">
+      <div class="mistake-num">06</div>
+      <h3>Being Afraid to Have an Opinion</h3>
+      <p>Playing it safe on every issue to avoid controversy. Bland = invisible. Your opinions on NE India's career landscape, on recruitment reforms, on the system's failures — these are what make you a leader, not a feed.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ SECTION 9: NORTH STAR METRICS -->
+<section style="border-bottom: none;">
+  <div class="sec-header">
+    <span class="sec-num">09 — How to Measure Authority</span>
+    <div class="sec-rule"></div>
+  </div>
+
+  <h2>You Can't Manage<br><em>What You Don't Measure</em></h2>
+  <p>Personal brand authority is often described as intangible — but it's not. Here are the specific signals that tell you whether your positioning is working or needs adjusting.</p>
+
+  <div class="table-wrap" style="margin-top: 32px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>What It Means</th>
+          <th>Month 1 Baseline</th>
+          <th>Month 6 Target</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Profile visits after personal posts</strong></td>
+          <td>People are curious enough about you to check who you are</td>
+          <td>Establish baseline</td>
+          <td>3× baseline</td>
+        </tr>
+        <tr>
+          <td><strong>DMs asking you personally for advice</strong></td>
+          <td>You're seen as a human authority, not just a page</td>
+          <td>0–5/week</td>
+          <td>20+/week</td>
+        </tr>
+        <tr>
+          <td><strong>Saves on personal insight posts</strong></td>
+          <td>People find your knowledge worth keeping — highest quality signal</td>
+          <td>Establish baseline</td>
+          <td>5%+ save rate</td>
+        </tr>
+        <tr>
+          <td><strong>Mentions / tags by others</strong></td>
+          <td>Your name is becoming a reference point in the community</td>
+          <td>0–2/month</td>
+          <td>15+/month</td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn connection requests from sponsors/media</strong></td>
+          <td>Your professional authority is being noticed by decision-makers</td>
+          <td>0–1/month</td>
+          <td>5+/month</td>
+        </tr>
+        <tr>
+          <td><strong>People signing up mentioning your name</strong></td>
+          <td>The personal brand is directly driving platform growth</td>
+          <td>Track from Day 1</td>
+          <td>20%+ of sign-ups</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-top: 32px;">
+    <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 14px;">The Ultimate Authority Signal</div>
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1.4; margin-bottom: 12px;">When people in NE India say "I heard about this job from [your name]" instead of "I saw it on some website" — that is when you've won. That is the goal. Everything in this document is in service of that single outcome.</p>
+    <p style="font-size: 13px; color: var(--muted); margin: 0;">Track this qualitatively. Ask new users how they found you. When the answer starts including your name, not just the platform name — you've arrived.</p>
+  </div>
+</section>
+
+</div><!-- end .page -->
+
+
+<!-- ══════════════ FOOTER -->
+<footer>
+  <div style="margin-bottom: 6px;"><span>NE Career Hub</span> · Authority Positioning Strategy · Founder Edition</div>
+  <div>Prepared by Claude · Personal Branding Framework · 2025 · Confidential</div>
+</footer>
+
+</body>
+</html>
