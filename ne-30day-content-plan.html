@@ -3,1471 +3,1431 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>30-Day Content Plan — NE Career Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>30-Day Strategy — NE Career Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f9f7f4;
-    --white: #ffffff;
-    --ink: #111118;
-    --ink2: #2a2a35;
-    --muted: #7a7a8a;
-    --border: #e4e1da;
-    --surface: #f2efe9;
+:root {
+  --ink:     #0f0f0d;
+  --ink2:    #1e1e1a;
+  --paper:   #f7f4ee;
+  --paper2:  #efece4;
+  --paper3:  #e5e1d7;
+  --muted:   #9a9488;
+  --muted2:  #6b6760;
+  --rule:    #ddd9cf;
+  --red:     #c8330a;
+  --red-dim: rgba(200,51,10,0.07);
+  --ig:      #c13584;
+  --fb:      #1877f2;
+}
 
-    --ig: #d4006a;
-    --ig-bg: #fff0f6;
-    --ig-border: #f5c0d8;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:14px;
+  line-height:1.6;
+}
 
-    --fb: #1565c0;
-    --fb-bg: #eff4ff;
-    --fb-border: #bdd0f5;
+/* ─── COVER ─── */
+.cover{
+  background:var(--ink);
+  color:var(--paper);
+  padding:0;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+.cover-stripe{
+  position:absolute;
+  top:0;right:0;
+  width:280px;height:100%;
+  background:var(--red);
+  opacity:0.06;
+  pointer-events:none;
+}
+.cover-topbar{
+  padding:28px 56px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.cover-brand{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:rgba(247,244,238,0.35);
+}
+.cover-badge{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--red);
+  border:1px solid rgba(200,51,10,0.35);
+  padding:5px 12px;
+}
+.cover-main{
+  padding:56px 56px 72px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;z-index:1;
+}
+.cover-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+}
+.cover-eyebrow::before{content:'';width:28px;height:1px;background:var(--red);}
+.cover-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(72px,12vw,148px);
+  font-weight:900;
+  line-height:0.86;
+  letter-spacing:-0.04em;
+  color:var(--paper);
+  margin-bottom:8px;
+}
+.cover-h em{display:block;font-style:italic;color:var(--red);}
+.cover-sub{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:rgba(247,244,238,0.28);
+  letter-spacing:0.08em;
+  margin-top:28px;
+  margin-bottom:40px;
+  max-width:520px;
+  line-height:1.7;
+}
+.cover-stats{
+  display:flex;
+  gap:0;
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding-top:32px;
+}
+.cstat{
+  padding-right:40px;
+  margin-right:40px;
+  border-right:1px solid rgba(255,255,255,0.07);
+}
+.cstat:last-child{border-right:none;}
+.cstat-n{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  font-weight:700;
+  color:var(--paper);
+  line-height:1;
+  margin-bottom:4px;
+}
+.cstat-l{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(247,244,238,0.25);
+}
+.cover-footer{
+  padding:20px 56px;
+  border-top:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  justify-content:space-between;
+}
+.cover-footer span{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(247,244,238,0.15);
+}
 
-    --li: #0a7c4b;
-    --li-bg: #edf8f3;
-    --li-border: #a8dfc5;
+/* ─── BODY LAYOUT ─── */
+.wrap{max-width:940px;margin:0 auto;padding:0 56px;}
 
-    --awareness: #7c3aed;
-    --trust: #0891b2;
-    --conversion: #c05621;
-    --engagement: #047857;
-    --authority: #9f1239;
-  }
+section{padding:72px 0;border-bottom:1px solid var(--rule);}
+section:last-child{border-bottom:none;}
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
+.sec-hed{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-hed::after{content:'';flex:1;height:1px;background:var(--rule);}
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Manrope', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-  }
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4.5vw,52px);
+  font-weight:900;
+  line-height:0.95;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+h2 em{font-style:italic;color:var(--red);}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--ink);
-    color: #f9f7f4;
-    padding: 56px 60px 48px;
-    position: relative;
-    overflow: hidden;
-  }
+.lead{
+  font-size:14px;
+  color:var(--muted2);
+  max-width:520px;
+  margin-top:14px;
+  line-height:1.75;
+}
 
-  header::after {
-    content: '30';
-    position: absolute;
-    right: 40px; top: -20px;
-    font-family: 'DM Serif Display', serif;
-    font-size: 260px;
-    color: rgba(255,255,255,0.025);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
+/* ─── PILLARS ─── */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.pillar{
+  background:var(--paper);
+  padding:22px 18px;
+  transition:background 0.15s;
+  cursor:default;
+}
+.pillar:hover{background:var(--paper2);}
+.pn{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--muted);
+  letter-spacing:0.12em;
+  margin-bottom:14px;
+}
+.picon{font-size:20px;display:block;margin-bottom:10px;}
+.ptitle{
+  font-family:'Playfair Display',serif;
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:6px;
+  letter-spacing:-0.01em;
+}
+.pdesc{font-size:11px;color:var(--muted);line-height:1.55;margin-bottom:14px;}
+.ptag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--red);
+  letter-spacing:0.08em;
+  background:var(--red-dim);
+  border:1px solid rgba(200,51,10,0.15);
+  padding:3px 7px;
+  display:inline-block;
+}
 
-  .header-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 6px 14px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(249,247,244,0.5);
-    margin-bottom: 20px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-  }
+/* ─── FREQUENCY BOX ─── */
+.freq-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.freq-card{background:var(--paper);padding:28px;}
+.fc-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--rule);
+}
+.fc-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid var(--paper3);
+  font-size:12px;
+  color:var(--ink2);
+}
+.fc-item:last-child{border-bottom:none;}
+.fc-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--red);flex-shrink:0;
+}
+.fc-n{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:4px;
+}
+.fc-sub{font-size:11px;color:var(--muted);margin-top:6px;}
 
-  header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(38px, 6vw, 72px);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-    position: relative; z-index: 1;
-  }
+/* ─── WEEK GRID ─── */
+.week-row{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.wday{background:var(--paper);padding:18px 12px;text-align:center;}
+.wday.active{background:var(--ink);}
+.wday-name{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.wday.active .wday-name{color:rgba(247,244,238,0.3);}
+.wday-theme{
+  font-family:'Playfair Display',serif;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.3;
+}
+.wday.active .wday-theme{color:var(--red);}
 
-  header h1 em { font-style: italic; color: #f0c060; }
+/* ─── REEL FORMATS ─── */
+.reel-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.rcard{
+  background:var(--paper);
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+.rcard::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:2px;
+  background:var(--rule);
+}
+.rcard.rc1::after{background:var(--red);}
+.rcard.rc2::after{background:#1a7a4a;}
+.rcard.rc3::after{background:#1a4fa0;}
+.rcard.rc4::after{background:#b07a00;}
+.rcard.rc5::after{background:var(--red);}
+.rcard.rc-times::after{background:var(--paper3);}
 
-  header p {
-    color: rgba(249,247,244,0.5);
-    font-size: 15px;
-    font-weight: 300;
-    max-width: 500px;
-    position: relative; z-index: 1;
-    margin-bottom: 36px;
-  }
+.rn{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.14em;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.rtitle{
+  font-family:'Playfair Display',serif;
+  font-size:17px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+  letter-spacing:-0.01em;
+}
+.rdesc{font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:16px;}
+.rhook{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  background:var(--paper2);
+  border:1px solid var(--rule);
+  border-left:2px solid var(--red);
+  padding:12px 14px;
+  color:var(--ink2);
+  line-height:1.7;
+  white-space:pre-line;
+}
+.rpurpose{
+  margin-top:12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--muted);
+  letter-spacing:0.08em;
+}
 
-  .header-meta {
-    display: flex;
-    gap: 32px;
-    position: relative; z-index: 1;
-  }
+/* ─── CAROUSEL FORMATS ─── */
+.car-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.ccard{background:var(--paper);padding:26px;}
+.cnum{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.12em;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.ctitle{
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.cdesc{font-size:12px;color:var(--muted2);line-height:1.6;}
 
-  .hm-item { }
-  .hm-n {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    line-height: 1;
-    color: #f0c060;
-    margin-bottom: 2px;
-  }
-  .hm-l {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(249,247,244,0.35);
-    font-weight: 500;
-  }
+/* ─── FACEBOOK ─── */
+.fb-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.fbcard{background:var(--paper);padding:26px;}
+.fbn{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px;}
+.fbtitle{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.fbdesc{font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:14px;}
+.fbex{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  background:var(--paper2);
+  border:1px solid var(--rule);
+  padding:10px 12px;
+  color:var(--ink2);
+  line-height:1.7;
+  white-space:pre-line;
+}
 
-  /* ── LEGEND ── */
-  .legend-bar {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 60px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  }
+/* ─── CALENDAR ─── */
+.calendar{margin-top:40px;}
 
-  .legend-title {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    font-weight: 600;
-    margin-right: 4px;
-  }
+.wblock{margin-bottom:2px;}
+.whead{
+  background:var(--ink);
+  color:var(--paper);
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.whead-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--red);
+}
+.whead-title{
+  font-size:12px;
+  font-weight:600;
+  color:var(--paper);
+  letter-spacing:-0.01em;
+}
+.whead-range{
+  margin-left:auto;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:rgba(247,244,238,0.2);
+  letter-spacing:0.08em;
+}
+.wdays{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  border-top:none;
+}
+.cday{
+  background:var(--paper);
+  display:grid;
+  grid-template-columns:52px 1fr 1fr;
+}
+.cdn{
+  background:var(--paper2);
+  border-right:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:14px 6px;
+  gap:2px;
+}
+.cdnum{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1;
+}
+.cdname{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:7px;
+  letter-spacing:0.12em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.creel{padding:12px 15px;border-right:1px solid var(--rule);}
+.cpost{padding:12px 15px;}
+.cplat{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.ig-p{color:var(--ig);}
+.fb-p{color:var(--fb);}
+.ccontent{
+  font-size:11px;
+  font-weight:600;
+  color:var(--ink2);
+  line-height:1.4;
+  letter-spacing:-0.01em;
+}
+.ctype{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8px;
+  color:var(--muted);
+  margin-top:3px;
+  letter-spacing:0.04em;
+}
 
-  .legend-group {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+/* generic week note block */
+.week-note{
+  background:var(--paper2);
+  border:1px solid var(--rule);
+  border-top:none;
+  padding:18px 22px;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.week-note-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.week-note-text{font-size:11px;color:var(--muted2);line-height:1.6;}
+.week-note-text strong{color:var(--ink);font-weight:600;}
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    border-radius: 2px;
-  }
+/* ─── PULL QUOTE ─── */
+.pull{
+  background:var(--ink);
+  padding:60px 56px;
+}
+.pull-q{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,2.6vw,30px);
+  font-weight:700;
+  color:var(--paper);
+  line-height:1.38;
+  letter-spacing:-0.025em;
+  max-width:640px;
+  margin-bottom:20px;
+  position:relative;
+}
+.pull-q em{font-style:italic;color:var(--red);}
+.pull-q::before{
+  content:'\201C';
+  position:absolute;
+  top:-20px;left:-10px;
+  font-size:80px;
+  color:rgba(200,51,10,0.1);
+  line-height:1;
+  pointer-events:none;
+}
+.pull-src{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(247,244,238,0.22);
+}
 
-  .badge-ig { background: var(--ig-bg); color: var(--ig); border: 1px solid var(--ig-border); }
-  .badge-fb { background: var(--fb-bg); color: var(--fb); border: 1px solid var(--fb-border); }
-  .badge-li { background: var(--li-bg); color: var(--li); border: 1px solid var(--li-border); }
+/* ─── FUNNEL ─── */
+.funnel{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  border:1px solid var(--rule);
+  overflow:hidden;
+  margin-top:40px;
+}
+.fstep{
+  flex:1;
+  background:var(--paper);
+  padding:28px 18px;
+  text-align:center;
+  border-right:1px solid var(--rule);
+  position:relative;
+  transition:background 0.15s;
+}
+.fstep:hover{background:var(--paper2);}
+.fstep:last-child{border-right:none;}
+.farrow{
+  position:absolute;
+  right:-10px;top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  color:var(--red);
+  z-index:2;
+  background:var(--paper);
+  padding:2px 0;
+  pointer-events:none;
+}
+.fstep:last-child .farrow{display:none;}
+.ficon{font-size:22px;margin-bottom:8px;display:block;}
+.flabel{font-size:12px;font-weight:600;color:var(--ink);}
+.fsub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);margin-top:3px;letter-spacing:0.06em;}
 
-  .purpose-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .p-awareness { background: var(--awareness); }
-  .p-trust { background: var(--trust); }
-  .p-conversion { background: var(--conversion); }
-  .p-engagement { background: var(--engagement); }
-  .p-authority { background: var(--authority); }
+/* ─── TIMES ─── */
+.times-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.tcard{background:var(--paper);padding:28px;}
+.tplat{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:18px;}
+.trow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:9px 0;
+  border-bottom:1px solid var(--paper3);
+}
+.trow:last-child{border-bottom:none;}
+.tlabel{font-size:12px;color:var(--muted2);}
+.tval{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  color:var(--red);
+  letter-spacing:0.04em;
+}
 
-  .purpose-label { font-size: 11px; font-weight: 600; }
+/* ─── DONT DO ─── */
+.dont-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.dcard{background:var(--paper);padding:24px;}
+.dx{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  font-weight:900;
+  color:rgba(200,51,10,0.12);
+  line-height:1;
+  margin-bottom:10px;
+}
+.dtitle{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+.dwhy{font-size:11px;color:var(--muted);line-height:1.55;}
 
-  .sep { width: 1px; height: 20px; background: var(--border); }
+/* ─── ENGAGEMENT ─── */
+.eng-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.ecard{background:var(--paper);padding:26px;}
+.en{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--muted);margin-bottom:10px;}
+.etitle{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.edesc{font-size:11px;color:var(--muted2);margin-bottom:12px;line-height:1.6;}
+.eex{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  background:var(--paper2);
+  border:1px solid var(--rule);
+  padding:8px 12px;
+  color:var(--ink2);
+  line-height:1.6;
+  font-style:italic;
+}
 
-  /* ── WEEK HEADER ── */
-  .week-header {
-    padding: 32px 60px 16px;
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-  }
+/* ─── GROWTH ─── */
+.growth-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:40px;
+}
+.gcard{background:var(--paper);padding:36px;}
+.gcard.gdark{background:var(--ink);}
+.gmonth{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:8px;
+}
+.gnum{
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  font-weight:900;
+  color:var(--ink);
+  line-height:1;
+  letter-spacing:-0.04em;
+  margin-bottom:6px;
+}
+.gdark .gnum{color:var(--paper);}
+.glabel{font-size:12px;color:var(--muted);}
+.gdark .glabel{color:rgba(247,244,238,0.3);}
 
-  .week-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 48px;
-    font-weight: 400;
-    line-height: 1;
-    color: var(--border);
-  }
-
-  .week-info { }
-  .week-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-  .week-sub {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  /* ── DAY CARDS ── */
-  .days-grid {
-    padding: 0 60px 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .day-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
-  }
-
-  .day-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    transform: translateY(-1px);
-  }
-
-  .day-num-col {
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 8px;
-    gap: 2px;
-  }
-
-  .day-label {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  .day-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--ink);
-  }
-
-  .day-dow {
-    font-size: 9px;
-    color: var(--muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .day-content {
-    padding: 0;
-  }
-
-  /* ── POST ROWS ── */
-  .post {
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 14px;
-    align-items: start;
-  }
-
-  .post:last-child { border-bottom: none; }
-
-  .post-left {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
-    min-width: 110px;
-  }
-
-  .post-center { min-width: 0; }
-
-  .post-right {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: flex-end;
-    flex-shrink: 0;
-  }
-
-  .post-slot {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  .post-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 3px;
-    line-height: 1.3;
-  }
-
-  .post-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  .post-angle {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--ink2);
-    font-style: italic;
-    margin-top: 4px;
-  }
-
-  .format-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--ink2);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .purpose-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    letter-spacing: 0.04em;
-  }
-
-  .pt-awareness { background: rgba(124,58,237,0.08); color: var(--awareness); border: 1px solid rgba(124,58,237,0.15); }
-  .pt-trust { background: rgba(8,145,178,0.08); color: var(--trust); border: 1px solid rgba(8,145,178,0.15); }
-  .pt-conversion { background: rgba(192,86,33,0.08); color: var(--conversion); border: 1px solid rgba(192,86,33,0.15); }
-  .pt-engagement { background: rgba(4,120,87,0.08); color: var(--engagement); border: 1px solid rgba(4,120,87,0.15); }
-  .pt-authority { background: rgba(159,18,57,0.08); color: var(--authority); border: 1px solid rgba(159,18,57,0.15); }
-
-  /* ── WEEK DIVIDER ── */
-  .week-divider {
-    margin: 24px 60px 0;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── SUMMARY SECTION ── */
-  .summary {
-    padding: 48px 60px;
-    background: var(--ink);
-    color: #f9f7f4;
-    margin-top: 40px;
-  }
-
-  .summary h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    font-weight: 400;
-    margin-bottom: 32px;
-    letter-spacing: -0.01em;
-  }
-
-  .summary h2 em { font-style: italic; color: #f0c060; }
-
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-
-  .sum-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 24px;
-  }
-
-  .sum-card h3 {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
-    font-weight: 600;
-  }
-
-  .sum-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 13px;
-  }
-
-  .sum-stat:last-child { border-bottom: none; }
-  .sum-stat-label { color: rgba(249,247,244,0.5); }
-  .sum-stat-val { font-weight: 700; color: #f0c060; }
-
-  .pro-tips {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .pro-tip {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 20px;
-    border-left: 2px solid #f0c060;
-  }
-
-  .pro-tip-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #f0c060;
-    margin-bottom: 6px;
-  }
-
-  .pro-tip p {
-    font-size: 12px;
-    color: rgba(249,247,244,0.5);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 32px;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--white);
-    border-top: 1px solid var(--border);
-  }
-
-  @media print {
-    .legend-bar { position: static; }
-    .day-card:hover { transform: none; box-shadow: none; }
-  }
+/* ─── FOOTER ─── */
+footer{
+  background:var(--ink2);
+  color:rgba(247,244,238,0.2);
+  padding:32px 56px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+footer span{color:var(--red);}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-tag">NE Career Hub · Content Strategy</div>
-  <h1>30-Day <em>Content Plan</em></h1>
-  <p>A fully mapped daily content calendar across Instagram, Facebook & LinkedIn — 2 posts per day, every post with a clear purpose, format, and message angle.</p>
-  <div class="header-meta">
-    <div class="hm-item"><div class="hm-n">60</div><div class="hm-l">Total Posts</div></div>
-    <div class="hm-item"><div class="hm-n">3</div><div class="hm-l">Platforms</div></div>
-    <div class="hm-item"><div class="hm-n">5</div><div class="hm-l">Content Pillars</div></div>
-    <div class="hm-item"><div class="hm-n">4</div><div class="hm-l">Weeks</div></div>
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-topbar">
+    <div class="cover-brand">NE Career Hub</div>
+    <div class="cover-badge">Social Media Strategy</div>
   </div>
-</header>
+  <div class="cover-main">
+    <div class="cover-eyebrow">Instagram · Facebook · Content Playbook</div>
+    <div class="cover-h">30<em>Days.</em></div>
+    <p class="cover-sub">
+      A complete content system for NE Career Hub — pillars, formats, a full calendar, posting times, and a traffic funnel. Built around one goal: alert signups.
+    </p>
+    <div class="cover-stats">
+      <div class="cstat">
+        <div class="cstat-n">5</div>
+        <div class="cstat-l">Content Pillars</div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-n">5</div>
+        <div class="cstat-l">Reel Formats</div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-n">2</div>
+        <div class="cstat-l">Platforms</div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-n">60+</div>
+        <div class="cstat-l">Post Ideas</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span>Instagram primary · Facebook support</span>
+    <span>Goal — audience growth → traffic → <span style="color:var(--red);">alert signups</span></span>
+  </div>
+</div>
 
-<div class="legend-bar">
-  <span class="legend-title">Platforms</span>
-  <div class="legend-group">
-    <span class="badge badge-ig">IG Instagram</span>
-    <span class="badge badge-fb">FB Facebook</span>
-    <span class="badge badge-li">LI LinkedIn</span>
+
+<!-- ═══ PILLARS ═══ -->
+<div class="wrap">
+<section>
+  <div class="sec-hed">01 — Core Content Pillars</div>
+  <h2>Only post from<br><em>these five</em></h2>
+  <p class="lead">These match exactly what govt exam aspirants engage with. Every post you publish belongs to one of these pillars. Stay inside the system.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn">PILLAR / 01</div>
+      <span class="picon">🔔</span>
+      <div class="ptitle">Job Alerts</div>
+      <p class="pdesc">Urgent, practical, deadline-driven. Jobs closing this week, new recruitments, state-specific openings.</p>
+      <span class="ptag">Traffic + saves</span>
+    </div>
+    <div class="pillar">
+      <div class="pn">PILLAR / 02</div>
+      <span class="picon">🧠</span>
+      <div class="ptitle">Exam Practice</div>
+      <p class="pdesc">Reasoning, GK, quick tricks. Comments push you to the algorithm — this is your reach engine.</p>
+      <span class="ptag">Algorithm reach</span>
+    </div>
+    <div class="pillar">
+      <div class="pn">PILLAR / 03</div>
+      <span class="picon">💡</span>
+      <div class="ptitle">Job Insights</div>
+      <p class="pdesc">Salary breakdowns, eligibility, hidden opportunities. Parents often share these widely.</p>
+      <span class="ptag">Shares + trust</span>
+    </div>
+    <div class="pillar">
+      <div class="pn">PILLAR / 04</div>
+      <span class="picon">📋</span>
+      <div class="ptitle">Application Help</div>
+      <p class="pdesc">Step-by-step guides and common mistakes. Highest save rates of any content type.</p>
+      <span class="ptag">Authority</span>
+    </div>
+    <div class="pillar">
+      <div class="pn">PILLAR / 05</div>
+      <span class="picon">🏆</span>
+      <div class="ptitle">Success Stories</div>
+      <p class="pdesc">Real aspirants from NE India. Motivation that no competitor can replicate.</p>
+      <span class="ptag">Credibility</span>
+    </div>
   </div>
-  <div class="sep"></div>
-  <span class="legend-title">Purpose</span>
-  <div class="legend-group">
-    <span class="purpose-label" style="color:var(--awareness); display:flex; align-items:center; gap:5px;"><span class="purpose-dot p-awareness"></span>Awareness</span>
-    <span class="purpose-label" style="color:var(--trust); display:flex; align-items:center; gap:5px;"><span class="purpose-dot p-trust"></span>Trust</span>
-    <span class="purpose-label" style="color:var(--conversion); display:flex; align-items:center; gap:5px;"><span class="purpose-dot p-conversion"></span>Conversion</span>
-    <span class="purpose-label" style="color:var(--engagement); display:flex; align-items:center; gap:5px;"><span class="purpose-dot p-engagement"></span>Engagement</span>
-    <span class="purpose-label" style="color:var(--authority); display:flex; align-items:center; gap:5px;"><span class="purpose-dot p-authority"></span>Authority</span>
+</section>
+
+
+<!-- ═══ FREQUENCY ═══ -->
+<section>
+  <div class="sec-hed">02 — Posting Frequency</div>
+  <h2>Daily. <em>Manageable.</em></h2>
+  <p class="lead">Total realistic workload per day, split by platform. Consistency beats volume every time.</p>
+
+  <div class="freq-grid">
+    <div class="freq-card">
+      <div class="fc-label">Instagram — Daily</div>
+      <div class="fc-item"><div class="fc-dot"></div>1 Reel</div>
+      <div class="fc-item"><div class="fc-dot"></div>1 Carousel or Story</div>
+    </div>
+    <div class="freq-card">
+      <div class="fc-label">Facebook — Daily</div>
+      <div class="fc-item"><div class="fc-dot"></div>1–2 Posts</div>
+      <div class="fc-item"><div class="fc-dot"></div>Text-first, shareable</div>
+    </div>
+    <div class="freq-card" style="background:var(--paper2);">
+      <div class="fc-label">Weekly Totals</div>
+      <div style="margin-top:4px;">
+        <div class="fc-n">14+</div>
+        <div class="fc-sub">posts per week across both platforms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WEEKLY STRUCTURE ═══ -->
+<section>
+  <div class="sec-hed">03 — Weekly Structure</div>
+  <h2>Build the<br><em>habit pattern</em></h2>
+  <p class="lead">Your audience should learn a pattern. Pattern builds habit. Habit builds the audience that shows up without being asked.</p>
+
+  <div class="week-row">
+    <div class="wday">
+      <div class="wday-name">Monday</div>
+      <div class="wday-theme">Opportunity</div>
+    </div>
+    <div class="wday active">
+      <div class="wday-name">Tuesday</div>
+      <div class="wday-theme">Exam Help</div>
+    </div>
+    <div class="wday">
+      <div class="wday-name">Wednesday</div>
+      <div class="wday-theme">Practice</div>
+    </div>
+    <div class="wday active">
+      <div class="wday-name">Thursday</div>
+      <div class="wday-theme">Salary / Insight</div>
+    </div>
+    <div class="wday">
+      <div class="wday-name">Friday</div>
+      <div class="wday-theme">Quiz / Reel</div>
+    </div>
+    <div class="wday active">
+      <div class="wday-name">Saturday</div>
+      <div class="wday-theme">Deadline Alert</div>
+    </div>
+    <div class="wday">
+      <div class="wday-name">Sunday</div>
+      <div class="wday-theme">Weekly Roundup</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ REEL FORMATS ═══ -->
+<section>
+  <div class="sec-hed">04 — Instagram Reel Formats</div>
+  <h2>Reels are your<br><em>discovery engine</em></h2>
+  <p class="lead">Goal: reach non-followers. Each reel should be 7–12 seconds, simple text, strong hook. Use these formats repeatedly — consistency beats novelty.</p>
+
+  <div class="reel-grid">
+    <div class="rcard rc1">
+      <div class="rn">FORMAT / 01</div>
+      <div class="rtitle">Reasoning Question</div>
+      <p class="rdesc">Drops a question, shows options, ends with "comment your answer." Comments signal the algorithm to push your account to new audiences.</p>
+      <div class="rhook">Govt Job Aspirants 👇
+Can you solve this?
+
+[Question]
+[Options A / B / C / D]
+
+— last screen —
+Comment your answer 👇</div>
+      <div class="rpurpose">Purpose → Comments = algorithm boost</div>
+    </div>
+
+    <div class="rcard rc2">
+      <div class="rn">FORMAT / 02</div>
+      <div class="rtitle">Hidden Job Opportunity</div>
+      <p class="rdesc">Opens with a surprising seat count nobody acts on. Then reveals salary, eligibility, deadline. Curiosity + low competition = high watch time.</p>
+      <div class="rhook">This govt job has 400 seats
+and almost nobody applies.
+
+→ ₹XX,000/month salary
+→ Eligibility: [details]
+→ Deadline: [date]
+
+Full details in bio.</div>
+      <div class="rpurpose">Purpose → Saves + profile visits</div>
+    </div>
+
+    <div class="rcard rc3">
+      <div class="rn">FORMAT / 03</div>
+      <div class="rtitle">Salary Reveal</div>
+      <p class="rdesc">Lead with the number — it's what stops the scroll. Job role next, then eligibility and deadline. These reels perform very well.</p>
+      <div class="rhook">₹52,000/month
+Govt Job 🏛️
+
+→ Role: [job title]
+→ Eligibility: [details]
+→ Deadline: [date]
+
+Apply link in bio →</div>
+      <div class="rpurpose">Purpose → High shares, parent-driven virality</div>
+    </div>
+
+    <div class="rcard rc4">
+      <div class="rn">FORMAT / 04</div>
+      <div class="rtitle">Exam Shortcut</div>
+      <p class="rdesc">Show a reasoning or maths trick that saves time in exams. "Solve in 5 seconds." People save this before exams — highest save rate of any reel format.</p>
+      <div class="rhook">Solve this reasoning question
+in 5 seconds ⚡
+
+[Question]
+
+Shortcut method:
+[Step 1 → Step 2 → Answer]
+
+Save this before your exam 📌</div>
+      <div class="rpurpose">Purpose → Saves + return visits</div>
+    </div>
+
+    <div class="rcard rc5">
+      <div class="rn">FORMAT / 05</div>
+      <div class="rtitle">Deadline Reminder</div>
+      <p class="rdesc">Urgency is your highest-converting trigger. Lead with the warning. Show the job. Make the cost of missing it feel real.</p>
+      <div class="rhook">⚠ This govt job closes
+in 2 days.
+
+→ Job: [title]
+→ Seats: [number]
+→ Eligibility: [details]
+
+Don't miss it → link in bio</div>
+      <div class="rpurpose">Purpose → Urgency drives clicks</div>
+    </div>
+
+    <div class="rcard rc-times" style="background:var(--paper2);">
+      <div class="rn">BEST TIMES TO POST</div>
+      <div class="rtitle">When to Post</div>
+      <p class="rdesc">Based on aspirant behaviour — when they're done studying and scrolling in the evenings.</p>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);">
+        <div class="trow" style="padding:10px 14px;border-bottom:1px solid var(--rule);">
+          <span class="tlabel">Reels</span>
+          <span class="tval">7:30 – 9:30 PM</span>
+        </div>
+        <div class="trow" style="padding:10px 14px;border-bottom:1px solid var(--rule);">
+          <span class="tlabel">Carousels</span>
+          <span class="tval">9:00 – 10:00 AM</span>
+        </div>
+        <div class="trow" style="padding:10px 14px;border-bottom:1px solid var(--rule);">
+          <span class="tlabel">Facebook AM</span>
+          <span class="tval">8:00 – 9:00 AM</span>
+        </div>
+        <div class="trow" style="padding:10px 14px;">
+          <span class="tlabel">Facebook PM</span>
+          <span class="tval">7:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CAROUSEL FORMATS ═══ -->
+<section>
+  <div class="sec-hed">05 — Carousel Formats</div>
+  <h2>Built for<br><em>saves</em></h2>
+  <p class="lead">Saves are the highest-quality engagement signal on Instagram. These formats are designed to be bookmarked and returned to repeatedly.</p>
+
+  <div class="car-grid">
+    <div class="ccard">
+      <div class="cnum">CAROUSEL / 01</div>
+      <div class="ctitle">Top 5 Govt Jobs This Week</div>
+      <p class="cdesc">Slide 1: strong hook. Slides 2–6: one job per slide with key details. Last slide: CTA to site. Post every Monday. Becomes the content people bookmark and check weekly.</p>
+    </div>
+    <div class="ccard">
+      <div class="cnum">CAROUSEL / 02</div>
+      <div class="ctitle">Jobs for 10th / 12th Pass</div>
+      <p class="cdesc">Huge audience — most people assume govt jobs require degrees. This format unlocks possibilities they didn't know existed. Massive reach among younger followers and parents.</p>
+    </div>
+    <div class="ccard">
+      <div class="cnum">CAROUSEL / 03</div>
+      <div class="ctitle">Salary Breakdown</div>
+      <p class="cdesc">Grade III govt employee: basic pay + DA + HRA + total. Then pension, job security. The full picture, not just the headline number. Parents share this everywhere.</p>
+    </div>
+    <div class="ccard">
+      <div class="cnum">CAROUSEL / 04</div>
+      <div class="ctitle">Application Guide</div>
+      <p class="cdesc">How to apply for [specific recruitment]. Step-by-step. Mistakes to avoid. These get the highest save rates of any content format you will ever post.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FACEBOOK ═══ -->
+<section>
+  <div class="sec-hed">06 — Facebook Playbook</div>
+  <h2>Different audience,<br><em>different rules</em></h2>
+  <p class="lead">Facebook users in NE India prefer text, lists, and alerts. They scroll slower, read fully, and share to family WhatsApp groups. Write for them.</p>
+
+  <div class="fb-grid">
+    <div class="fbcard">
+      <div class="fbn">FB FORMAT / 01</div>
+      <div class="fbtitle">Weekly Job List</div>
+      <p class="fbdesc">Text post, fully written out. Highly shareable. Becomes the Sunday content people forward to every family group.</p>
+      <div class="fbex">Top Govt Jobs This Week
+
+1. Assam Police – 1,645 posts
+2. NTPC EET – 515 posts
+3. Bank of Baroda – 166 posts
+4. [Job 4]
+5. [Job 5]
+
+Full details → necareerhub.in</div>
+    </div>
+    <div class="fbcard">
+      <div class="fbn">FB FORMAT / 02</div>
+      <div class="fbtitle">Deadline Alert</div>
+      <p class="fbdesc">Urgency posts drive the highest click-through on Facebook. Short, clear, direct. Post at 8am and 7pm on deadline days.</p>
+      <div class="fbex">⚠ Jobs Closing in 48 Hours
+
+• Assam Police
+• NTPC
+• PNB Apprentice
+
+Last chance to apply.
+Link in comments →</div>
+    </div>
+    <div class="fbcard">
+      <div class="fbn">FB FORMAT / 03</div>
+      <div class="fbtitle">Parent Targeted</div>
+      <p class="fbdesc">Address parents directly. They forward everything. This is your most cost-effective distribution — free virality through family groups.</p>
+      <div class="fbex">If your son or daughter is
+preparing for govt jobs,
+share this with them.
+
+[3 jobs opening this week]
+
+Deadline: [date]
+Apply: necareerhub.in</div>
+    </div>
+  </div>
+</section>
+</div><!-- /wrap -->
+
+
+<!-- ═══ PULL QUOTE ═══ -->
+<div class="pull">
+  <div style="max-width:940px;margin:0 auto;padding:0 56px;">
+    <p class="pull-q">Your biggest advantage: you actually built a product. Most job pages just repost notifications. You can show <em>alerts, reminders, filters</em> — a real platform in action. That makes your content more credible than every competitor combined.</p>
+    <div class="pull-src">The single strategic advantage that cannot be copied</div>
   </div>
 </div>
 
 
-<!-- ═══════════ WEEK 1 ═══════════ -->
-<div class="week-header">
-  <div class="week-num">W1</div>
-  <div class="week-info">
-    <div class="week-title">Foundation Week — Introduce the Person Behind the Platform</div>
-    <div class="week-sub">Days 1–7 · Goal: Make your audience know who you are, not just what you post</div>
+<div class="wrap">
+
+<!-- ═══ CALENDAR ═══ -->
+<section>
+  <div class="sec-hed">07 — 30-Day Content Calendar</div>
+  <h2>Every day,<br><em>planned</em></h2>
+  <p class="lead">One Reel + one Facebook post per day. Week 1 establishes the rhythm. Weeks 2–4 add new content types while keeping the base structure.</p>
+
+  <div class="calendar">
+
+    <!-- WEEK 1 -->
+    <div class="wblock">
+      <div class="whead">
+        <span class="whead-num">Week 01</span>
+        <span class="whead-title">Foundation — establish the rhythm</span>
+        <span class="whead-range">Days 1–7</span>
+      </div>
+      <div class="wdays">
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">1</div><div class="cdname">Mon</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Reasoning question — "Can you solve this?"</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Top govt jobs this week — full list</div><div class="ctype">Weekly digest · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">2</div><div class="cdname">Tue</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Salary reveal — ₹XX,000/month govt job</div><div class="ctype">Format 03 · Job Insights</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Jobs open for graduates right now</div><div class="ctype">List post · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">3</div><div class="cdname">Wed</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">GK question — NE India specific</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Assam jobs roundup this week</div><div class="ctype">State spotlight · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">4</div><div class="cdname">Thu</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Hidden opportunity — 400 seats, nobody applying</div><div class="ctype">Format 02 · Job Insights</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">How to apply for [popular recruitment] — guide</div><div class="ctype">Application Help</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">5</div><div class="cdname">Fri</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Reasoning question #2 — new topic</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Salary breakdown — Grade III govt employee</div><div class="ctype">Carousel content · Job Insights</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">6</div><div class="cdname">Sat</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">⚠ Deadline alert — closing this weekend</div><div class="ctype">Format 05 · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Jobs closing in 48 hours — urgent</div><div class="ctype">Deadline · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">7</div><div class="cdname">Sun</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Weekly recap — top jobs + what's coming next week</div><div class="ctype">Recap · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Sunday roundup — full job list, shareable</div><div class="ctype">Weekly digest</div></div>
+        </div>
+      </div>
+      <div class="week-note">
+        <span class="week-note-icon">→</span>
+        <span class="week-note-text">Week 1 goal: <strong>establish the rhythm.</strong> Same post types on the same days. Your audience starts to expect you.</span>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="wblock" style="margin-top:2px;">
+      <div class="whead">
+        <span class="whead-num">Week 02</span>
+        <span class="whead-title">Add layers — state spotlights, document checklists, scam warnings</span>
+        <span class="whead-range">Days 8–14</span>
+      </div>
+      <div class="wdays">
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">8</div><div class="cdname">Mon</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">New week, new jobs — top opportunities opening</div><div class="ctype">Format 02 · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Meghalaya jobs spotlight this week</div><div class="ctype">State spotlight · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">9</div><div class="cdname">Tue</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Maths shortcut — solve in 5 seconds</div><div class="ctype">Format 04 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Document checklist — what you need for most applications</div><div class="ctype">Application Help</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">10</div><div class="cdname">Wed</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">GK quiz — current affairs, NE focused</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Manipur jobs this week</div><div class="ctype">State spotlight · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">11</div><div class="cdname">Thu</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Jobs for 10th pass — most people don't know these exist</div><div class="ctype">Format 02 · Job Insights</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">⚠ Scam warning — fake govt job sites to avoid</div><div class="ctype">Trust · Authority</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">12</div><div class="cdname">Fri</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Reasoning question — series continues</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">"Share this with your children" — parent targeted</div><div class="ctype">Parent targeting · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">13</div><div class="cdname">Sat</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">⚠ Weekend deadline — last 48 hours</div><div class="ctype">Format 05 · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Jobs closing this weekend — urgent</div><div class="ctype">Deadline · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">14</div><div class="cdname">Sun</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Week 2 recap + preview of next week</div><div class="ctype">Recap · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Sunday roundup — week 2 full digest</div><div class="ctype">Weekly digest</div></div>
+        </div>
+      </div>
+      <div class="week-note">
+        <span class="week-note-icon">→</span>
+        <span class="week-note-text">Week 2 adds: <strong>state spotlights</strong> (Meghalaya, Manipur), <strong>document checklist</strong>, and a <strong>scam warning post</strong> — builds trust and positions you as the reliable source.</span>
+      </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="wblock" style="margin-top:2px;">
+      <div class="whead">
+        <span class="whead-num">Week 03</span>
+        <span class="whead-title">Add depth — success stories, exam tips, eligibility posts</span>
+        <span class="whead-range">Days 15–21</span>
+      </div>
+      <div class="wdays">
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">15</div><div class="cdname">Mon</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Success story — real aspirant from NE, selected</div><div class="ctype">Success Stories · Credibility</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Top jobs opening this week</div><div class="ctype">Weekly digest · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">16</div><div class="cdname">Tue</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Eligibility explainer — who can apply for APSC</div><div class="ctype">Application Help · Authority</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Exam tips — what toppers do differently</div><div class="ctype">Exam Practice</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">17</div><div class="cdname">Wed</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Reasoning series — day 10</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Nagaland + Tripura jobs this week</div><div class="ctype">State spotlight</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">18</div><div class="cdname">Thu</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Private vs govt salary — honest comparison</div><div class="ctype">Format 03 · Job Insights</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Grade III salary full breakdown — parents forward this</div><div class="ctype">Job Insights</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">19</div><div class="cdname">Fri</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Quiz — fastest fingers, comment the answer</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Platform demo — how our alerts work</div><div class="ctype">Product trust</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">20</div><div class="cdname">Sat</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">⚠ Weekend deadline alert</div><div class="ctype">Format 05 · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Jobs closing this weekend</div><div class="ctype">Deadline · Job Alerts</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">21</div><div class="cdname">Sun</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Week 3 recap + success story highlight</div><div class="ctype">Recap · Success Stories</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Sunday digest — week 3 full roundup</div><div class="ctype">Weekly digest</div></div>
+        </div>
+      </div>
+      <div class="week-note">
+        <span class="week-note-icon">→</span>
+        <span class="week-note-text">Week 3 adds: <strong>first success story</strong>, <strong>exam tips content</strong>, and the <strong>platform demo reel</strong> — start showing the actual product in content.</span>
+      </div>
+    </div>
+
+    <!-- WEEK 4 -->
+    <div class="wblock" style="margin-top:2px;">
+      <div class="whead">
+        <span class="whead-num">Week 04</span>
+        <span class="whead-title">Scale — platform features, job market insights, biggest jobs of the month</span>
+        <span class="whead-range">Days 22–30</span>
+      </div>
+      <div class="wdays">
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">22</div><div class="cdname">Mon</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Biggest jobs of the month — final week push</div><div class="ctype">Format 02 · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Month's top jobs — comprehensive list</div><div class="ctype">Monthly roundup</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">23</div><div class="cdname">Tue</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Platform feature reel — set an alert in 14 seconds</div><div class="ctype">Product feature · Trust</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Job market insight — which NE state is hiring most</div><div class="ctype">Job Insights · Authority</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">24</div><div class="cdname">Wed</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Reasoning challenge — hardest one yet</div><div class="ctype">Format 01 · Exam Practice</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Arunachal + Sikkim + Mizoram jobs this week</div><div class="ctype">State spotlight</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">25</div><div class="cdname">Thu</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Hidden high-salary job — this month's best find</div><div class="ctype">Format 02 · Job Insights</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Pension + benefits breakdown — full govt package</div><div class="ctype">Job Insights</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">26</div><div class="cdname">Fri</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Success story #2 — persistence pays off</div><div class="ctype">Success Stories · Credibility</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">How the platform works — explained for parents</div><div class="ctype">Product trust</div></div>
+        </div>
+        <div class="cday">
+          <div class="cdn"><div class="cdnum">27</div><div class="cdname">Sat</div></div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">⚠ Final weekend deadline this month</div><div class="ctype">Format 05 · Job Alerts</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">Last chance jobs closing this weekend</div><div class="ctype">Deadline · Job Alerts</div></div>
+        </div>
+        <div class="cday" style="border-top:2px solid var(--red);">
+          <div class="cdn" style="background:var(--ink);">
+            <div class="cdnum" style="color:var(--red);">30</div>
+            <div class="cdname" style="color:rgba(247,244,238,0.3);">Tue</div>
+          </div>
+          <div class="creel"><div class="cplat ig-p">Instagram · Reel</div><div class="ccontent">Month 1 wrap — what we built together</div><div class="ctype">Month recap · All pillars</div></div>
+          <div class="cpost"><div class="cplat fb-p">Facebook · Post</div><div class="ccontent">30 days: jobs posted, alerts sent, community grown — by the numbers</div><div class="ctype">Transparency · Trust milestone</div></div>
+        </div>
+      </div>
+      <div class="week-note">
+        <span class="week-note-icon">→</span>
+        <span class="week-note-text">Week 4 goal: <strong>convert the audience you've built.</strong> Platform feature reel, job market data, second success story. End with a transparency post — real numbers build real trust.</span>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
-<div class="days-grid">
 
-  <!-- DAY 1 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">1</span>
-      <span class="day-dow">Mon</span>
-    </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Reel</span>
-          <span class="purpose-tag pt-awareness">Awareness</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Origin Story — "Why I Built NE Career Hub"</div>
-          <div class="post-desc">Your face on camera, 45–60 sec. Tell the real story: what problem you saw, what made you angry enough to build something. End: "I built it so no one in NE India misses their shot." This is your most important post of the entire 30 days.</div>
-          <div class="post-angle">Angle: The builder who refused to accept the status quo</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-fb">FB</span>
-          <span class="format-tag">Long Text</span>
-          <span class="purpose-tag pt-awareness">Awareness</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">"I built NE Career Hub because I was frustrated" — Facebook personal note</div>
-          <div class="post-desc">300–400 word personal post. Write it like a letter to your community. Why you started, what you've built, what you want for NE India's job seekers. End with "Share this if you know someone who's still looking."</div>
-          <div class="post-angle">Angle: Local builder with a local mission — one of us</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
+<!-- ═══ ENGAGEMENT TACTICS ═══ -->
+<section>
+  <div class="sec-hed">08 — Engagement Tactics</div>
+  <h2>Always do<br><em>these three</em></h2>
+  <p class="lead">Instagram pushes posts with active conversations. These habits take 2 minutes per post and meaningfully affect your reach.</p>
 
-  <!-- DAY 2 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">2</span>
-      <span class="day-dow">Tue</span>
+  <div class="eng-grid">
+    <div class="ecard">
+      <div class="en">TACTIC / 01</div>
+      <div class="etitle">Pin a Comment</div>
+      <p class="edesc">On every reel, pin a comment immediately after posting. Signals activity to the algorithm before organic engagement builds.</p>
+      <div class="eex">"Answer will be revealed tomorrow. Comment yours below 👇"</div>
     </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Carousel</span>
-          <span class="purpose-tag pt-trust">Trust</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Top 5 Govt Jobs Open Right Now in NE India</div>
-          <div class="post-desc">Slide 1: hook "5 govt jobs closing this week — are you eligible?" Slides 2–6: one job per slide with key details (dept, seats, qualification, deadline). Last slide: "Never miss one → necareerhub.com" Clean, branded design.</div>
-          <div class="post-angle">Angle: Useful intelligence delivered beautifully</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-li">LI</span>
-          <span class="format-tag">Article</span>
-          <span class="purpose-tag pt-authority">Authority</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">"NE India Has a Career Information Gap — and I Built Something About It"</div>
-          <div class="post-desc">LinkedIn founder introduction post. 400–500 words. Professional but personal. Establish your position as someone who identified a real regional problem and engineered a solution. Tag relevant NE organizations.</div>
-          <div class="post-angle">Angle: Founder-thinker solving a regional inequality</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
+    <div class="ecard">
+      <div class="en">TACTIC / 02</div>
+      <div class="etitle">Ask a Question</div>
+      <p class="edesc">End every caption with one question. Comments are weighted higher than likes. One good question doubles your comment count.</p>
+      <div class="eex">"Are you preparing for SSC, Railway or State exams?"</div>
     </div>
-  </div>
-
-  <!-- DAY 3 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">3</span>
-      <span class="day-dow">Wed</span>
-    </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-fb">FB</span>
-          <span class="format-tag">Text + Image</span>
-          <span class="purpose-tag pt-engagement">Engagement</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Poll: "Which state are you applying for jobs from?"</div>
-          <div class="post-desc">Simple question post with a graphic. Assam / Manipur / Meghalaya / Nagaland / Other. This tells you exactly who your audience is AND boosts reach through comments. Follow up by replying to every comment with a relevant job tip.</div>
-          <div class="post-angle">Angle: We want to serve you better — tell us who you are</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Reel</span>
-          <span class="purpose-tag pt-trust">Trust</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">"How our job alerts actually work" — 30-sec product demo</div>
-          <div class="post-desc">Screen recording + voiceover. Show the filter feature, show setting an alert, show what the notification looks like. Make it feel effortless. End: "It's free. No ads. Ever." This builds trust in your product, not just your brand.</div>
-          <div class="post-angle">Angle: Show don't tell — the product speaks for itself</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 4 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">4</span>
-      <span class="day-dow">Thu</span>
-    </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Carousel</span>
-          <span class="purpose-tag pt-trust">Trust</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">"Salary Breakdown: What a Grade III Govt Employee Actually Earns"</div>
-          <div class="post-desc">Basic pay + DA + HRA + other allowances = total. Then pension, job security, leaves. Make people realize the full value, not just the headline number. This gets massive saves and shares — people will screenshot and send to parents.</div>
-          <div class="post-angle">Angle: The numbers nobody shows you completely</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-fb">FB</span>
-          <span class="format-tag">Text Post</span>
-          <span class="purpose-tag pt-awareness">Awareness</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Parent-addressed post: "If your child is between 20–30, share this"</div>
-          <div class="post-desc">Directly address parents. List 3 jobs currently open with eligibility in plain language. Bilingual if possible. End: "আপোনাৰ সন্তানক শ্বেয়াৰ কৰক।" (Share with your children.) Designed purely to be forwarded to family WhatsApp groups.</div>
-          <div class="post-angle">Angle: Parents as your distribution network</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 5 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">5</span>
-      <span class="day-dow">Fri</span>
-    </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Reel</span>
-          <span class="purpose-tag pt-engagement">Engagement</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Reasoning Quiz Reel: "Can you solve this? 90% get it wrong"</div>
-          <div class="post-desc">Show a logical reasoning or GK question relevant to APSC/SSC on screen. Give 5 seconds. Reveal answer with explanation. End: "Follow for daily practice questions." High watch-time = massive algorithm boost. Post at 7–8pm when aspirants are studying.</div>
-          <div class="post-angle">Angle: Test yourself — this is what your exam will ask</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-li">LI</span>
-          <span class="format-tag">Text Post</span>
-          <span class="purpose-tag pt-authority">Authority</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">"3 things I've learned tracking NE India's govt job market"</div>
-          <div class="post-desc">Short, punchy LinkedIn post. Data-backed observations: which departments hire most, what qualifications are most in demand, why certain jobs get low applications. Professional tone. This attracts sponsors and media who want credible voices.</div>
-          <div class="post-angle">Angle: The insider with data others don't have</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 6 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">6</span>
-      <span class="day-dow">Sat</span>
-    </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Carousel</span>
-          <span class="purpose-tag pt-trust">Trust</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">First Success Story: Real user who found a job through NE Career Hub</div>
-          <div class="post-desc">Reach out to a real user this week. Get their story and permission. Slide 1: their photo or silhouette + "Selected ✓". Slides 2–4: their journey. Slide 5: how they used the alerts. Last slide: "Your story could be next." Raw and real beats polished and fake.</div>
-          <div class="post-angle">Angle: Proof of possibility from someone who looks like you</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-fb">FB</span>
-          <span class="format-tag">Text + Image</span>
-          <span class="purpose-tag pt-conversion">Conversion</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">⚠️ Deadline Alert: Jobs closing this Sunday</div>
-          <div class="post-desc">List jobs expiring in 48 hours. Name, seats, eligibility, link. Bold deadline in the post. End: "Set your alerts so you never see this post too late again → necareerhub.com" Urgency drives the highest click-through of any content type.</div>
-          <div class="post-angle">Angle: Urgency as service — I'm saving you from regret</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 7 -->
-  <div class="day-card">
-    <div class="day-num-col">
-      <span class="day-label">Day</span>
-      <span class="day-number">7</span>
-      <span class="day-dow">Sun</span>
-    </div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 1 · AM</span>
-          <span class="badge badge-fb">FB</span>
-          <span class="format-tag">Text Post</span>
-          <span class="purpose-tag pt-engagement">Engagement</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Week 1 Roundup: "Top 10 NE Govt Jobs This Week"</div>
-          <div class="post-desc">Full text list post. All 10 jobs with brief details. Post on Sunday morning — parents and aspirants review it together over tea. Make it the post people bookmark and send to family. This becomes a Sunday ritual if you do it consistently.</div>
-          <div class="post-angle">Angle: Your trusted Sunday briefing — ritual content</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left">
-          <span class="post-slot">Post 2 · PM</span>
-          <span class="badge badge-ig">IG</span>
-          <span class="format-tag">Story Series</span>
-          <span class="purpose-tag pt-conversion">Conversion</span>
-        </div>
-        <div class="post-center">
-          <div class="post-title">Sunday Stories: "Have you set your job alerts yet?"</div>
-          <div class="post-desc">3–4 story slides. Slide 1: Question sticker "Are you actively job hunting?" Slide 2: How alerts work (quick visual). Slide 3: "Set yours free — link in bio." Use countdown sticker to a major upcoming deadline. Direct conversion push on a low-competition day.</div>
-          <div class="post-angle">Angle: Gentle close — make it easy to take the next step</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
+    <div class="ecard">
+      <div class="en">TACTIC / 03</div>
+      <div class="etitle">Reply Fast</div>
+      <p class="edesc">Reply to every comment within the first hour of posting. Instagram treats your replies as additional comments. More comments = more reach.</p>
+      <div class="eex">"First 60 minutes after posting is the most important window for engagement."</div>
     </div>
   </div>
+</section>
 
-</div><!-- end week 1 -->
 
-<div class="week-divider"></div>
+<!-- ═══ FUNNEL ═══ -->
+<section>
+  <div class="sec-hed">09 — Traffic Funnel</div>
+  <h2>Content to<br><em>signups</em></h2>
+  <p class="lead">Every post has one job: move people one step closer to signing up for alerts. Your bio should read: <em>"Govt Job Updates – North East · Save jobs & get reminder before last date"</em></p>
 
-<!-- ═══════════ WEEK 2 ═══════════ -->
-<div class="week-header">
-  <div class="week-num">W2</div>
-  <div class="week-info">
-    <div class="week-title">Authority Week — Demonstrate Deep Knowledge</div>
-    <div class="week-sub">Days 8–14 · Goal: Be the most informed voice in the room</div>
-  </div>
-</div>
-
-<div class="days-grid">
-
-  <!-- DAY 8 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">8</span><span class="day-dow">Mon</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">"This Govt Job Has 400 Seats and Barely Anyone Is Applying"</div>
-          <div class="post-desc">Pick a real under-applied job from your platform. Present the stats: seats available vs. typical applicants. Explain why the odds are better than popular exams. End with the deadline and link. Curiosity + low competition = high watch time.</div>
-          <div class="post-angle">Angle: The hidden opportunity most people scroll past</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"After posting 300+ NE govt jobs, here's what I've noticed"</div>
-          <div class="post-desc">3–4 genuine observations from running the platform: which departments hire most, which months are recruitment-heavy, which qualifications are most needed. Personal voice. Data-backed. This is the insider knowledge that earns respect.</div>
-          <div class="post-angle">Angle: Pattern recognition only a platform founder would have</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
+  <div class="funnel">
+    <div class="fstep">
+      <span class="farrow">→</span>
+      <span class="ficon">📱</span>
+      <div class="flabel">Content</div>
+      <div class="fsub">Reel / Post</div>
+    </div>
+    <div class="fstep">
+      <span class="farrow">→</span>
+      <span class="ficon">👤</span>
+      <div class="flabel">Profile Visit</div>
+      <div class="fsub">Bio + link</div>
+    </div>
+    <div class="fstep">
+      <span class="farrow">→</span>
+      <span class="ficon">🌐</span>
+      <div class="flabel">Website</div>
+      <div class="fsub">necareerhub.in</div>
+    </div>
+    <div class="fstep">
+      <span class="farrow">→</span>
+      <span class="ficon">🔔</span>
+      <div class="flabel">Alert Signup</div>
+      <div class="fsub">The goal</div>
+    </div>
+    <div class="fstep">
+      <span class="ficon">♾️</span>
+      <div class="flabel">Retained User</div>
+      <div class="fsub">Returns for jobs</div>
     </div>
   </div>
+</section>
 
-  <!-- DAY 9 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">9</span><span class="day-dow">Tue</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"Step-by-step: How to Apply for [Specific Popular Job]"</div>
-          <div class="post-desc">Pick the most talked-about current recruitment. Walk through every step: portal, documents needed, fees, common mistakes, submission. 8–10 slides. Massive save rate. People keep this and refer back. Every save is a future reminder of your brand.</div>
-          <div class="post-angle">Angle: I'm doing the confusion-clearing work so you don't have to</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">"Why most government recruitment portals fail job seekers"</div>
-          <div class="post-desc">Bold opinion piece. What's broken about official recruitment websites. What you built to fix it. This shows you're not just reacting — you're thinking structurally. Media and sponsors notice people who can articulate systemic problems.</div>
-          <div class="post-angle">Angle: Constructive critic with a solution already built</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
+
+<!-- ═══ DONT DO ═══ -->
+<section>
+  <div class="sec-hed">10 — What Not to Do</div>
+  <h2>Six habits that<br><em>kill accounts</em></h2>
+  <p class="lead">Your brand is clear, useful information. These habits silently undo months of trust-building.</p>
+
+  <div class="dont-grid">
+    <div class="dcard">
+      <div class="dx">✕</div>
+      <div class="dtitle">400-word captions</div>
+      <p class="dwhy">Nobody reads them. Short, specific, scannable always wins.</p>
+    </div>
+    <div class="dcard">
+      <div class="dx">✕</div>
+      <div class="dtitle">Motivational quotes</div>
+      <p class="dwhy">Generic inspiration does nothing for your niche. Zero saves, zero trust built.</p>
+    </div>
+    <div class="dcard">
+      <div class="dx">✕</div>
+      <div class="dtitle">Too many hashtags</div>
+      <p class="dwhy">Hashtag stacking is 2018. Use 3–5 specific, relevant tags maximum.</p>
+    </div>
+    <div class="dcard">
+      <div class="dx">✕</div>
+      <div class="dtitle">Posting PDFs</div>
+      <p class="dwhy">PDFs get no reach. Convert the same content into a carousel or reel.</p>
+    </div>
+    <div class="dcard">
+      <div class="dx">✕</div>
+      <div class="dtitle">Generic news reposts</div>
+      <p class="dwhy">Anyone can copy-paste a notification. Add your context or don't post it.</p>
+    </div>
+    <div class="dcard">
+      <div class="dx">✕</div>
+      <div class="dtitle">Going silent</div>
+      <p class="dwhy">2+ weeks of silence destroys months of trust. One post beats zero posts, always.</p>
     </div>
   </div>
+</section>
 
-  <!-- DAY 10 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">10</span><span class="day-dow">Wed</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Quiz Reel #2: NE India GK question with twist ending</div>
-          <div class="post-desc">This week make it NE India specific — geography, history, or current affairs relevant to local govt exams. "Which NE state has the most central govt employees per capita?" Answer surprises people. Series consistency builds follow intent.</div>
-          <div class="post-angle">Angle: Test yourself on the region you're applying to serve</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text + Image</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">State Spotlight: "This week's top jobs in Manipur"</div>
-          <div class="post-desc">Rotate through states weekly. Manipur-specific jobs, eligibility, deadlines. Tag Manipur in post text. People from that state will share it to local groups. Geographic targeting through content — zero ad spend.</div>
-          <div class="post-angle">Angle: We see your state specifically — this is for you</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
+
+<!-- ═══ GROWTH ═══ -->
+<section style="border-bottom:none;">
+  <div class="sec-hed">11 — Growth Expectations</div>
+  <h2>Realistic numbers,<br><em>honest timeline</em></h2>
+  <p class="lead">Conservative estimates if reels hit the algorithm. One viral reel can compress this timeline significantly.</p>
+
+  <div class="growth-grid">
+    <div class="gcard">
+      <div class="gmonth">Month 01</div>
+      <div class="gnum">1k–3k</div>
+      <div class="glabel">followers · foundation built · rhythm established</div>
+    </div>
+    <div class="gcard gdark">
+      <div class="gmonth">Month 03</div>
+      <div class="gnum">10k+</div>
+      <div class="glabel">followers · algorithm traction · compounding reach</div>
     </div>
   </div>
+</section>
 
-  <!-- DAY 11 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">11</span><span class="day-dow">Thu</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"Jobs you can apply to RIGHT NOW with just a 10th pass"</div>
-          <div class="post-desc">Qualification-filtered carousel. Massive appeal because it's hyper-relevant. Many followers feel disqualified by degree requirements — this unlocks possibilities they didn't know existed. End: "Filter by your qualification at necareerhub.com"</div>
-          <div class="post-angle">Angle: Inclusion — there's a path for everyone</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">"The 3 documents that delay most applications — check yours now"</div>
-          <div class="post-desc">Common document issues: wrong format certificates, expired IDs, missing caste certificates. Practical and actionable. Ends with: "We post job requirements with full document checklists at necareerhub.com so you're always prepared."</div>
-          <div class="post-angle">Angle: Preventing failure before it happens — proactive care</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
+</div><!-- /wrap -->
 
-  <!-- DAY 12 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">12</span><span class="day-dow">Fri</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"Private job vs Govt job salary — honest comparison at age 30"</div>
-          <div class="post-desc">Side-by-side comparison: Grade III govt salary with benefits vs average private sector salary in NE India. Include job security, pension, leaves, medical. This is the content parents desperately want to show their children. Massively shareable.</div>
-          <div class="post-angle">Angle: The complete picture, not just the headline number</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Post</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">Platform milestone post: "We just sent our [X]th job alert"</div>
-          <div class="post-desc">Celebrate a real platform metric. Users, alerts sent, jobs posted. Add what you've learned, what you're building next. This kind of transparent update attracts potential partners, investors, and sponsors on LinkedIn who want to associate with growing platforms.</div>
-          <div class="post-angle">Angle: Transparent builder sharing real growth</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 13 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">13</span><span class="day-dow">Sat</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">Success Story #2: "She failed twice. This is what happened next."</div>
-          <div class="post-desc">Feature a user who struggled before succeeding. The narrative arc of failure → persistence → selection is the most emotionally resonant story your audience can see. It mirrors their own journey. This is your highest-save content of the week.</div>
-          <div class="post-angle">Angle: Your struggle is not unique — and it ends well</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Urgency Post</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">⚠️ Weekend deadline alert — last chance posts</div>
-          <div class="post-desc">Same as Day 6 structure but different jobs. This becomes a weekly pattern your audience relies on. The Saturday deadline post trains people to check you every weekend — habit formation through consistent urgency content.</div>
-          <div class="post-angle">Angle: Your Saturday safety net — never miss a Sunday deadline</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 14 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">14</span><span class="day-dow">Sun</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-fb">FB</span><span class="format-tag">Weekly Digest</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Sunday Digest: Week 2 Top Jobs + "What's coming next week"</div>
-          <div class="post-desc">Your Sunday ritual post. This week add a teaser: "Next week 3 major recruitments are expected to open — follow us to be first." Creates anticipation, gives people a reason to come back Monday. Forward-looking content drives repeat visits.</div>
-          <div class="post-angle">Angle: Your weekly briefing + something to look forward to</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"Why NE Career Hub has no ads — and never will"</div>
-          <div class="post-desc">Short personal Reel. You on camera explaining your philosophy: the platform exists to serve the user, not advertisers. This USP differentiation, said out loud and personally, builds the kind of trust that makes people choose you over any competitor.</div>
-          <div class="post-angle">Angle: The anti-platform platform — my values, stated clearly</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="week-divider"></div>
-
-<!-- ═══════════ WEEK 3 ═══════════ -->
-<div class="week-header">
-  <div class="week-num">W3</div>
-  <div class="week-info">
-    <div class="week-title">Community Week — Make Your Audience Feel Seen</div>
-    <div class="week-sub">Days 15–21 · Goal: Turn followers into a loyal community that advocates for you</div>
-  </div>
-</div>
-
-<div class="days-grid">
-
-  <!-- DAY 15 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">15</span><span class="day-dow">Mon</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">"If you've been preparing for 3+ years — this is for you"</div>
-          <div class="post-desc">Empathy reel directly addressing battle-hardened aspirants. Acknowledge the grind, the doubt, the family pressure. No toxic positivity. Just honest acknowledgment + one specific actionable tip. This makes Rahul — your core audience — feel genuinely seen.</div>
-          <div class="post-angle">Angle: I see your grind. It matters. Here's what to do next.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">Scam warning: "Fake government job sites circulating in NE India"</div>
-          <div class="post-desc">Proactively warn about fake/fraudulent job postings you've noticed. Name the red flags to watch for. This positions you as the protector of your community — not just an information source. Huge trust signal and highly shareable content.</div>
-          <div class="post-angle">Angle: I'm watching out for you — even when it's inconvenient</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 16 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">16</span><span class="day-dow">Tue</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">"Upcoming recruitments in the next 30 days — be ready"</div>
-          <div class="post-desc">Forward-looking calendar carousel. Departments expected to announce, approximate timelines, what qualifications to have ready. This makes you the anticipatory source — people follow you not just for current jobs but future ones. Creates long-term follower value.</div>
-          <div class="post-angle">Angle: I'm watching what's coming so you can prepare now</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Article</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">"What NE India's hiring patterns tell us about regional development"</div>
-          <div class="post-desc">Macro-level LinkedIn article. Connect recruitment data to government budget priorities, infrastructure spending, state-level development. 500–600 words. This is the article that gets shared by bureaucrats, academics, and journalists — and those shares bring sponsor inquiries.</div>
-          <div class="post-angle">Angle: The data-informed regional analyst</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 17 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">17</span><span class="day-dow">Wed</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Quiz Reel #3: Maths shortcut for competitive exams</div>
-          <div class="post-desc">A quick calculation trick — percentage, ratio, or simplification — that saves time in exams. Show the long method vs. your shortcut. "Save this for your next exam." High save rate guaranteed. Quiz series is now in its 3rd week, building consistent viewers.</div>
-          <div class="post-angle">Angle: Exam edge that takes 60 seconds to learn</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text + Image</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">State Spotlight: "This week's top jobs in Meghalaya"</div>
-          <div class="post-desc">Rotate to Meghalaya this week. Same format as Manipur spotlight (Day 10). Systematic state rotation ensures every major NE state audience feels specifically served — not just lumped into "NE India."</div>
-          <div class="post-angle">Angle: Your state. Your jobs. Specifically for you.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 18 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">18</span><span class="day-dow">Thu</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"Age bar is approaching for many of you — here's what to prioritize"</div>
-          <div class="post-desc">For aspirants 27–32 who feel the clock ticking. List the exams where age matters most vs. those with higher limits. Priority action plan. This content hits the deepest fear of your core audience and converts that fear into directed action — with you as the guide.</div>
-          <div class="post-angle">Angle: Time is real. Here's how to use what you have left.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">"How NE Career Hub's personalised alerts saved someone from missing a deadline"</div>
-          <div class="post-desc">Tell a real or composite story: user had their qualification filter set, a matching job was posted at 6pm, they got an alert, applied by 11pm, closed at midnight. This is product storytelling — making your feature feel human. Best driver of sign-ups.</div>
-          <div class="post-angle">Angle: The alert that changed everything — could be yours</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 19 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">19</span><span class="day-dow">Fri</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">"Day in my life building NE Career Hub" — behind the scenes</div>
-          <div class="post-desc">Raw phone footage. Morning, checking new job listings, verifying details, pushing alerts, replying to DMs, a problem you solved. No polish needed — authenticity wins here. Your audience wants to see who's behind the platform. This humanizes everything.</div>
-          <div class="post-angle">Angle: The real human work behind every alert you receive</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">"What I'd change about govt recruitment if I had one conversation with a minister"</div>
-          <div class="post-desc">Bold opinion. Specific, constructive, data-informed. Not a rant — a thoughtful reform proposal. This is the content that gets reshared by policy-interested LinkedIn users and puts your name in unexpected places. Opinion = visibility in rooms you haven't entered yet.</div>
-          <div class="post-angle">Angle: Builder who thinks beyond the platform to the system</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 20 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">20</span><span class="day-dow">Sat</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">Success Story #3: "From village in Barpeta to government officer"</div>
-          <div class="post-desc">Geographic specificity matters enormously. A story from a small town or village in NE India — not a metro — resonates deeply with the majority of your audience who fear that geography limits them. Show it doesn't. This is your most shareable success story yet.</div>
-          <div class="post-angle">Angle: Geography is not destiny — proof from someone like you</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Urgency Post</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">Saturday deadline alert — Week 3</div>
-          <div class="post-desc">Third week of this Saturday ritual. By now, a significant portion of your audience expects this post every Saturday. Habit is forming. Continue the format: jobs closing this weekend + CTA to set alerts. Consistency is compounding.</div>
-          <div class="post-angle">Angle: Your weekly safety check — always here on Saturday</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 21 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">21</span><span class="day-dow">Sun</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-fb">FB</span><span class="format-tag">Weekly Digest</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Sunday Digest Week 3 + Mid-month personal reflection</div>
-          <div class="post-desc">Add a personal note this week: what you've been thinking about, a lesson from the platform this month, something that surprised you. This vulnerability in the weekly digest deepens the personal connection with your Facebook audience — especially parents who relate to reflective writing.</div>
-          <div class="post-angle">Angle: The weekly briefing with a human heart</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-ig">IG</span><span class="format-tag">Story + Poll</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Sunday Stories: "What content do you want more of?"</div>
-          <div class="post-desc">Poll story: Job alerts / Exam tips / Success stories / Salary breakdowns. This both engages your audience AND gives you real data on what to prioritize in Week 4. Showing you're listening builds loyalty. Always publicly acknowledge the result the next day.</div>
-          <div class="post-angle">Angle: You shape this platform — I'm listening</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="week-divider"></div>
-
-<!-- ═══════════ WEEK 4 ═══════════ -->
-<div class="week-header">
-  <div class="week-num">W4</div>
-  <div class="week-info">
-    <div class="week-title">Conversion Week — Turn Trust Into Action</div>
-    <div class="week-sub">Days 22–30 · Goal: Convert warm audience into sign-ups, saves, and shares</div>
-  </div>
-</div>
-
-<div class="days-grid">
-
-  <!-- DAY 22 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">22</span><span class="day-dow">Mon</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Quiz Reel #4: "How many seconds does it take to set a job alert?" — product gamification</div>
-          <div class="post-desc">Show yourself doing it on screen in real-time: open site, set filter, turn on alert — timed. "14 seconds. That's all." Then ask: "Comment your time when you try it." This makes the sign-up feel like a fun challenge, not a CTA. Brilliant conversion trick.</div>
-          <div class="post-angle">Angle: The easiest thing you'll do today that matters</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"What I've learned from our users this month"</div>
-          <div class="post-desc">Genuine learnings from DMs, comments, questions you've received. What surprised you about what people struggle with. What you've built or improved because of feedback. This transparency makes your audience feel like partners in the platform, not just users.</div>
-          <div class="post-angle">Angle: You told me, I listened — here's what changed</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 23 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">23</span><span class="day-dow">Tue</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">"Here's exactly what you get when you sign up for free alerts"</div>
-          <div class="post-desc">Feature walkthrough carousel. Slide 1: hook "This is what 10,000+ people in NE India have already done." Slides 2–5: each benefit shown visually — personalized alerts, expiry reminders, filter by qualification, no ads. Slide 6: "Free. Always. Set yours now." Direct and proud.</div>
-          <div class="post-angle">Angle: Here's what you've been missing — and it's free</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Post</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">"Building NE Career Hub taught me these 5 things about product development in underserved markets"</div>
-          <div class="post-desc">Founder wisdom post. Lessons from building something real in NE India — internet connectivity challenges, trust barriers, language considerations, community-first approach. This attracts tech entrepreneurs, investors, and media across India who are interested in regional innovation stories.</div>
-          <div class="post-angle">Angle: Regional builder with lessons for every underserved market</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 24 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">24</span><span class="day-dow">Wed</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">"This govt job pays ₹52,000/month — and barely 300 people applied"</div>
-          <div class="post-desc">Your best curiosity + salary reveal reel of the month. Find the most surprising real example. High number + low competition = irresistible watch. This is the format most likely to go beyond your existing audience into new discovery feeds. Optimize the first frame heavily.</div>
-          <div class="post-angle">Angle: The opportunity gap hiding in plain sight</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text + Image</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">State Spotlight: "Assam hiring update — what's open this week"</div>
-          <div class="post-desc">Assam spotlight — your largest state audience. More detail than other state posts. District-level specificity where possible. Assam content gets the broadest reach on your Facebook page. Make it shareable to every Assam-based group your audience is part of.</div>
-          <div class="post-angle">Angle: Assam-first, comprehensive, share-ready</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 25 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">25</span><span class="day-dow">Thu</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"What nobody tells you about APSC preparation — from someone who's watched hundreds apply"</div>
-          <div class="post-desc">Not generic advice. Specific observations you've made from your platform data and user conversations. Which subjects most people under-prepare for. What the syllabus emphasis actually is vs. what coaching centers teach. Raw insight beats polished tips every time.</div>
-          <div class="post-angle">Angle: The unfiltered truth from inside the data</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Community question: "What's the biggest challenge in your job search right now?"</div>
-          <div class="post-desc">Open-ended question. Ask your Facebook audience what they're struggling with most. Respond personally to every comment. This gives you content ideas, builds community, and signals to the algorithm that your page generates real conversations — boosting organic reach.</div>
-          <div class="post-angle">Angle: I'm asking because I genuinely want to help</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 26 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">26</span><span class="day-dow">Fri</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">"The message I received that reminded me why I built this"</div>
-          <div class="post-desc">Read (with permission, or anonymized) a DM from a user who shared how the platform helped them. Your emotional response on camera. This is your most human post of the month — and the most powerful conversion driver because it shows the product's real impact on real lives.</div>
-          <div class="post-angle">Angle: This is why. Every single day.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Post</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">"NE India's talent surplus and information deficit — a founder's view"</div>
-          <div class="post-desc">Your flagship LinkedIn opinion piece of the month. The big picture argument: NE India has talent but lacks the information infrastructure to connect that talent to opportunity. NE Career Hub as the first step. What needs to follow. Share-worthy, citable, professionally significant.</div>
-          <div class="post-angle">Angle: The systemic thinker with skin in the game</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 27 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">27</span><span class="day-dow">Sat</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">Success Story #4: "Selected at 29 — after 5 years of trying"</div>
-          <div class="post-desc">The longest journey story of the month. 5-year persistence narrative. For your 27–32 audience who fear they've run out of time, this is the most powerful content you can post. It also shows the platform's reliability over time — they kept using alerts, kept applying.</div>
-          <div class="post-angle">Angle: Five years. One yes. It only takes one.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Urgency Post</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">Saturday deadline alert — Week 4 (final of the month)</div>
-          <div class="post-desc">Add a note this week: "This is my 4th Saturday deadline post this month. If you've been seeing these and still haven't set an alert — today is the day. Takes 14 seconds. Link below." The meta-reference to consistency itself is a powerful closing argument.</div>
-          <div class="post-angle">Angle: Four weeks of showing up — don't let this Saturday be the one you miss</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 28 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">28</span><span class="day-dow">Sun</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-fb">FB</span><span class="format-tag">Weekly Digest</span><span class="purpose-tag pt-engagement">Engagement</span></div>
-        <div class="post-center">
-          <div class="post-title">Final Sunday Digest of the month — with a personal note from you</div>
-          <div class="post-desc">Jobs roundup as usual. But this week end with a personal letter: what this month meant, what you've learned from your community, what's coming next month. Build anticipation. Make your audience feel like they're part of something ongoing — not just following a page.</div>
-          <div class="post-angle">Angle: Month one ends. What I built with you this month.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">"30 days of content later — here's what I've learned about you"</div>
-          <div class="post-desc">Meta-reel: reflect on the month. What content resonated most. What questions people asked. What surprised you about your audience. Close with gratitude and a clear CTA: "If you haven't signed up for alerts yet — this is your sign." Reflective content converts the fence-sitters.</div>
-          <div class="post-angle">Angle: A month of listening. Here's what I heard.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 29 -->
-  <div class="day-card">
-    <div class="day-num-col"><span class="day-label">Day</span><span class="day-number">29</span><span class="day-dow">Mon</span></div>
-    <div class="day-content">
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Carousel</span><span class="purpose-tag pt-awareness">Awareness</span></div>
-        <div class="post-center">
-          <div class="post-title">"Month 2 preview: Big recruitments expected to open soon"</div>
-          <div class="post-desc">Forward-looking teaser. Departments expected to announce in the next 30 days. "Follow now so you don't miss the notification." This bridges month 1 into month 2, gives existing followers a reason to stay, and gives new followers an immediate reason to follow. Perfect acquisition post.</div>
-          <div class="post-angle">Angle: What's coming — and why you need to be watching</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-fb">FB</span><span class="format-tag">Text Post</span><span class="purpose-tag pt-trust">Trust</span></div>
-        <div class="post-center">
-          <div class="post-title">"One month of NE Career Hub content — by the numbers"</div>
-          <div class="post-desc">Transparency post: how many jobs posted, how many alerts sent, how many users helped, what feedback you received. Real numbers only. This monthly transparency ritual becomes one of your most trusted content formats — proving the platform is active, growing, and real.</div>
-          <div class="post-angle">Angle: Radical transparency — here's what we actually did</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 30 -->
-  <div class="day-card" style="border: 2px solid var(--ink);">
-    <div class="day-num-col" style="background: var(--ink);">
-      <span class="day-label" style="color: rgba(249,247,244,0.4);">Day</span>
-      <span class="day-number" style="color: #f0c060;">30</span>
-      <span class="day-dow" style="color: rgba(249,247,244,0.4);">Tue</span>
-    </div>
-    <div class="day-content">
-      <div class="post" style="background: rgba(17,17,24,0.02);">
-        <div class="post-left"><span class="post-slot">Post 1 · AM</span><span class="badge badge-ig">IG</span><span class="format-tag">Reel</span><span class="purpose-tag pt-conversion">Conversion</span></div>
-        <div class="post-center">
-          <div class="post-title">🏁 Day 30 Reel: "If you follow one account for govt jobs in NE India — make it this one"</div>
-          <div class="post-desc">Your boldest, most direct piece of content. You on camera. State your positioning clearly: what you've built, who it's for, why it's different, what they get. End with a clear ask — follow, sign up, set alert. 30 days of trust earns the right to make this ask confidently.</div>
-          <div class="post-angle">Angle: 30 days of value. One clear ask. You've earned it.</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-      <div class="post" style="background: rgba(17,17,24,0.02);">
-        <div class="post-left"><span class="post-slot">Post 2 · PM</span><span class="badge badge-li">LI</span><span class="format-tag">Reflection</span><span class="purpose-tag pt-authority">Authority</span></div>
-        <div class="post-center">
-          <div class="post-title">LinkedIn Month-End: "What building in Northeast India taught me about trust"</div>
-          <div class="post-desc">Closing LinkedIn essay. What you've learned about your audience, about building in a region others overlook, about trust as a product feature. This is your best piece of writing this month. It attracts speaking opportunities, media interviews, and the partners who will help NE Career Hub reach its next stage.</div>
-          <div class="post-angle">Angle: The builder who went deep and came back with lessons</div>
-        </div>
-        <div class="post-right"></div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- end week 4 -->
-
-
-<!-- ═══════════ SUMMARY ═══════════ -->
-<div class="summary">
-  <h2>30-Day <em>Summary</em></h2>
-
-  <div class="summary-grid">
-    <div class="sum-card">
-      <h3 style="color: rgba(249,247,244,0.4);">Content by Purpose</h3>
-      <div class="sum-stat"><span class="sum-stat-label">Awareness</span><span class="sum-stat-val">14 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Trust Building</span><span class="sum-stat-val">18 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Conversion</span><span class="sum-stat-val">13 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Engagement</span><span class="sum-stat-val">11 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Authority</span><span class="sum-stat-val">10 posts</span></div>
-    </div>
-
-    <div class="sum-card">
-      <h3 style="color: rgba(249,247,244,0.4);">Content by Platform</h3>
-      <div class="sum-stat"><span class="sum-stat-label">Instagram (IG)</span><span class="sum-stat-val">34 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Facebook (FB)</span><span class="sum-stat-val">20 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">LinkedIn (LI)</span><span class="sum-stat-val">10 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Daily average</span><span class="sum-stat-val">2.1 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Total posts</span><span class="sum-stat-val">60+</span></div>
-    </div>
-
-    <div class="sum-card">
-      <h3 style="color: rgba(249,247,244,0.4);">Content by Format</h3>
-      <div class="sum-stat"><span class="sum-stat-label">Reels</span><span class="sum-stat-val">15 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Carousels</span><span class="sum-stat-val">14 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Text / Long-form</span><span class="sum-stat-val">18 posts</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">Stories</span><span class="sum-stat-val">3 series</span></div>
-      <div class="sum-stat"><span class="sum-stat-label">LinkedIn articles</span><span class="sum-stat-val">4 posts</span></div>
-    </div>
-  </div>
-
-  <div class="pro-tips">
-    <div class="pro-tip">
-      <div class="pro-tip-title">⏰ Best Posting Times</div>
-      <p>Instagram Reels: 7–9pm. Instagram Carousels: 8–10am. Facebook job posts: 9–10am and 7–8pm. LinkedIn: Tuesday–Thursday 8–10am. Saturday deadline posts: 10am sharp.</p>
-    </div>
-    <div class="pro-tip">
-      <div class="pro-tip-title">🔁 Recurring Formats (Keep These Forever)</div>
-      <p>Saturday deadline alert, Sunday weekly digest, weekly quiz reel, monthly success story, state spotlight rotation. These become rituals. Rituals build audiences that show up without being asked.</p>
-    </div>
-    <div class="pro-tip">
-      <div class="pro-tip-title">📊 What to Track Weekly</div>
-      <p>IG: Reel reach, carousel saves, profile visits after personal posts. FB: Post shares, link clicks, comment volume. LinkedIn: Post impressions, connection requests from new industries. All platforms: website sign-ups mentioning social as source.</p>
-    </div>
-    <div class="pro-tip">
-      <div class="pro-tip-title">🎯 The One Rule Above All Others</div>
-      <p>Never miss the Saturday deadline post. Never skip the Sunday digest. These two rituals, done consistently for 6 months, will do more for your audience growth than any single viral moment ever could. Consistency is the strategy.</p>
-    </div>
-  </div>
-</div>
 
 <footer>
-  NE Career Hub · 30-Day Content Plan · 3 Platforms · 60 Posts · Built by Claude · 2025
+  <span>NE Career Hub · 30-Day Content Strategy · 2025</span>
+  <span>Instagram primary · Facebook support · Goal: <span>alert signups</span></span>
 </footer>
 
 </body>
